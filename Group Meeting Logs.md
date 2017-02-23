@@ -14,7 +14,7 @@ Summary: Discussed various game ideas. Agreed to meet 2/17/17 to begin storyboar
 
 *2/17/17*
 
-Duration: 3:00 PM - 5:00 PM
+Duration: 2:00 PM - 5:00 PM
 
 Present Members: ALL
 
