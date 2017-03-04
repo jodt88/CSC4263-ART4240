@@ -1,0 +1,54 @@
+-Summary of our game concept
+	-Story
+	-Objectives & Goals
+		-Make as much money as possible within a given time frame as well as making more money than your rival
+	-Gameplay
+
+-Aesthetics
+	-Visual
+	-Auditory
+
+-Game Mechanics
+	-Algorithms/scripts
+	-Money per action
+	-Time "
+	-Game seperated in segments of 7 days
+		-A day in game = 10 mins real time
+		-Stop spawning patrons at 9 minutes, tending to ones already there (real life restaurant policy)
+	-Patrons spawn based on a timer
+
+-Story
+	-Opening Scene
+	-New Day Title Cards and animations
+		-Rival comes in and announced his previous day earnings
+	-Ending
+
+-Objectives & Goals
+	-Main Goal: making more than your competitor
+		-Rival comes in and announced his previous day earnings each day
+		-Makes a set amount each day + a multiplier based on the number of customers not attended to
+	-Make as much money as possible within a given timeframe
+	-Managing time and player availability in order to increase profits
+
+Gameplay
+	-Cleaning tables and beds
+		-Time spent
+		-Money made
+	-Satisfied/Dissatisfied boolean variable for patrons
+		-Dissatisfied by default, changes to satsified when sent to appropriate room
+		-Upon leaving, checks variable
+			-If satisfied, increments your pay
+			-If dissatisfied, pay goes to opponent
+	-The tutorial pamphlet available after initial cutscene. Available for player to view later on.
+
+-Upgrades
+	-Upgrades have a set cost, and each tier of each upgrade increases in cost
+	-Table Upgrades examples 
+		-Buy a new table
+		-Increase patron drinking rate
+		-Increase the rate at which you clean
+	-Cost of upgrades is deducted from your earnings
+	-No limit to the amount of upgrades you can purchase, aside from your money or the number of upgrades available in the store
+
+
+	

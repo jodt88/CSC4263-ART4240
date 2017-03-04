@@ -31,3 +31,13 @@ Present Members: ALL
 Summary: Reworked our game's concepts per the instructor's critiques, and redrew storyboards to fit these changes.
 
 ---
+
+*3/3/17*
+
+Duration: 1:00 PM - 2:50 PM
+
+Present Members: Christy Henson, Ethan Rainey, Christopher Schayer, Jody Toms
+
+Summary: Small discussion regarding pathfinding in Unity. Laid out a summary for what to include in our Game Design Document. Will work collaboratively on the document based on this summary.
+
+---
