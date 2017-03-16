@@ -41,3 +41,13 @@ Present Members: Christy Henson, Ethan Rainey, Christopher Schayer, Jody Toms
 Summary: Small discussion regarding pathfinding in Unity. Laid out a summary for what to include in our Game Design Document. Will work collaboratively on the document based on this summary.
 
 ---
+
+*3/16/17*
+
+Duration: 11:50 AM - 12:27 PM
+
+Present Members: Christy Henson, Ethan Rainey, Christopher Schayer, Jody Toms
+
+Summary: Determined what in-game features needed to be demonstrated for the prototype demonstration. We then divided up our roles accordingly. Planned to meet 3/20/17 to rehearse the presentation. Gregory was informed of his role.
+
+---
