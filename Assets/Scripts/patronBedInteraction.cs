@@ -19,7 +19,7 @@ public class patronBedInteraction : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D other)
 	{
-		if (other.gameObject.name != "player") 
+		if (other.gameObject.name != "Barkeeper")
 		{
 			origPatronSprite = other.gameObject.GetComponent<SpriteRenderer> ().sprite;
 			patron = other.gameObject;

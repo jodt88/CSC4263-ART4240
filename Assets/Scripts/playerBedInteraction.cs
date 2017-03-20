@@ -11,7 +11,7 @@ public class playerBedInteraction : MonoBehaviour {
 
 	void OnTriggerStay2D(Collider2D other)
 	{
-		if (other.gameObject.name == "player" && patronBedInteraction.needsCleaning == true) 
+		if (other.gameObject.name == "Barkeeper" && patronBedInteraction.needsCleaning == true) 
 		{
 			if(cleanTimer != 0f) 
 			{

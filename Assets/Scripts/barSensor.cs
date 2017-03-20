@@ -8,7 +8,7 @@ public class barSensor : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D other)
 	{
-		if (other.gameObject.name == "player") 
+		if (other.gameObject.name == "Barkeeper") 
 		{
 			behindBar = true;
 		}
@@ -16,7 +16,7 @@ public class barSensor : MonoBehaviour {
 
 	void OnTriggerExit2D(Collider2D other)
 	{
-		if (other.gameObject.name == "player") 
+		if (other.gameObject.name == "Barkeeper") 
 		{
 			behindBar = false;
 		}
