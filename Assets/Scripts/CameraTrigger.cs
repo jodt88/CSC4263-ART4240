@@ -6,7 +6,7 @@ public class CameraTrigger : MonoBehaviour {
 
     // Use this for initialization
 
-    float Speed = 15.0f;
+    float Speed = 8.0f;
     Transform endPoint;
     Transform cam;
     bool enter = false;
