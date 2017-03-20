@@ -7,12 +7,12 @@ public class SpawnNPC : MonoBehaviour {
     // Use this for initialization
     float time;
 
-    public GameObject patron;
+   public GameObject patronInstance;
 
     void Start ()
     {
         time = 0;
-        patron = GameObject.FindGameObjectWithTag("Patron");
+	 
 
     }
 	
@@ -27,6 +27,7 @@ public class SpawnNPC : MonoBehaviour {
     void Spawn()
     {
         time = 0;
-        Instantiate(patron, transform.position, transform.rotation);
+		patronInstance = Instantiate(Resources.Load ("patron"),transform.position,transform.rotation)as GameObject;
+        //Instantiate(patron, transform.position, transform.rotation);
     }
 }

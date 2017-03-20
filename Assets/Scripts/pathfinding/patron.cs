@@ -21,12 +21,12 @@ public class patron : MonoBehaviour {
 	//private 
 	void Start () {
 
-		int pos = GameManager.resourceTable[1].availablePosition();
+		int pos = GameManager.resourceTable[0].availablePosition();
 		if (pos < 0) {
 			//no chair available dont walk to table. 
 		} else {
-			Transform chair =  GameManager.resourceTable [1].getPosition(pos);
-			GameManager.resourceTable [1].swapAvailable (pos);
+			Transform chair =  GameManager.resourceTable [0].getPosition(pos);
+			GameManager.resourceTable [0].swapAvailable (pos);
 			agent.SetDestination (chair.position);
 
 
