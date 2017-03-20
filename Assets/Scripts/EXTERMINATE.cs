@@ -6,6 +6,7 @@ public class EXTERMINATE : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D other) 
 	{
-		DestroyObject (other.gameObject);
+        if (other.gameObject.tag != "Player") // Don't destroy the player
+            DestroyObject (other.gameObject);
 	}
 }
