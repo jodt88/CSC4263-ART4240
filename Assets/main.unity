@@ -657,7 +657,7 @@ GameObject:
   - component: {fileID: 932627783}
   m_Layer: 0
   m_Name: RightDoor
-  m_TagString: Untagged
+  m_TagString: RDoor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -670,7 +670,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 932627782}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee5978db59a08f54e915e5482408ae2d, type: 3}
+  m_Script: {fileID: 11500000, guid: 381309066ec92274fac52300b862aaa9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!61 &932627784
@@ -712,7 +712,7 @@ GameObject:
   - component: {fileID: 932915696}
   m_Layer: 0
   m_Name: LeftDoor
-  m_TagString: Untagged
+  m_TagString: LDoor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -904,7 +904,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1072546543}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.6917586, y: -0.26, z: 0}
+  m_LocalPosition: {x: 0.04, y: 0.6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1168204838}
@@ -1346,7 +1346,7 @@ GameObject:
   - component: {fileID: 1316657013}
   m_Layer: 0
   m_Name: FloorForAdventureRoom(Right Room)
-  m_TagString: Untagged
+  m_TagString: RightCamPos
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1815,7 +1815,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 5.0090084
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2

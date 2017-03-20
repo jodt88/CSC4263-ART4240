@@ -20,7 +20,7 @@ public class SpawnNPC : MonoBehaviour {
 	void Update ()
     {
         time += Time.deltaTime;
-        if (time >= 2)
+        if (time >= 10)
             Spawn();
 	}
 

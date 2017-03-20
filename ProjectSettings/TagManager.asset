@@ -3,7 +3,14 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Patron
+  - MidCamPos
+  - LeftCamPos
+  - LobbySawn
+  - LDoor
+  - RightCamPos
+  - RDoor
   layers:
   - Default
   - TransparentFX

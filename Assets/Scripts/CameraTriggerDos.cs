@@ -2,10 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraTrigger : MonoBehaviour
-{
-
-    // Use this for initialization
+public class CameraTriggerDos : MonoBehaviour {
 
     float Speed = 8.0f;
     Transform endPoint;
@@ -16,7 +13,7 @@ public class CameraTrigger : MonoBehaviour
     void Start()
     {
         //can probably replace the CamPoses with the room transforms as they are the same
-        endPoint = GameObject.FindGameObjectWithTag("LeftCamPos").transform;
+        endPoint = GameObject.FindGameObjectWithTag("RightCamPos").transform;
         cam = GameObject.FindGameObjectWithTag("MainCamera").transform;
     }
 
@@ -43,13 +40,13 @@ public class CameraTrigger : MonoBehaviour
 
     void switchEndpoint()
     {
-        if (endPoint.tag == "LeftCamPos")
+        if (endPoint.tag == "RightCamPos")
         {
             endPoint = GameObject.FindGameObjectWithTag("MidCamPos").transform;
         }
 
         else
-            endPoint = GameObject.FindGameObjectWithTag("LeftCamPos").transform;
+            endPoint = GameObject.FindGameObjectWithTag("RightCamPos").transform;
 
     }
 
@@ -61,4 +58,5 @@ public class CameraTrigger : MonoBehaviour
             enter = false;
         }
     }
+
 }
