@@ -229,6 +229,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f72e5a9045c12b4489ed9d9b9520da4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  patronInstance: {fileID: 0}
 --- !u!4 &496761417
 Transform:
   m_ObjectHideFlags: 0
@@ -644,7 +645,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &980730982
 AudioSource:
@@ -938,6 +939,7 @@ GameObject:
   - component: {fileID: 1072546545}
   - component: {fileID: 1072546544}
   - component: {fileID: 1072546547}
+  - component: {fileID: 1072546548}
   m_Layer: 0
   m_Name: Bar
   m_TagString: Untagged
@@ -1034,6 +1036,30 @@ PolygonCollider2D:
       - {x: 2.9199998, y: 0.48}
       - {x: 1.5999999, y: 0.48}
       - {x: 1.6138046, y: -0.6291339}
+--- !u!60 &1072546548
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1072546543}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  m_Points:
+    m_Paths:
+    - - {x: -1.7997309, y: -0.65642226}
+      - {x: -1.8499999, y: 0.48}
+      - {x: -3.07, y: 0.48}
+      - {x: -3.07, y: -1.77}
+      - {x: -2.4577696, y: -1.710607}
+      - {x: 2.8952043, y: -1.7813506}
+      - {x: 2.9199998, y: -1.93}
+      - {x: 2.9199998, y: 0.48}
+      - {x: 1.5999999, y: 0.48}
+      - {x: 1.5965556, y: -0.6501366}
 --- !u!1 &1147061963
 GameObject:
   m_ObjectHideFlags: 0
@@ -1955,5 +1981,5 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
