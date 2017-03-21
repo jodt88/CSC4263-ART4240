@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MusicPlayer : MonoBehaviour
 {
-    public int songNum;
+    int songNum;
     float time;
     List<AudioSource> songs = new List<AudioSource>();
     
@@ -12,7 +12,7 @@ public class MusicPlayer : MonoBehaviour
     // Use this for initialization
     void Start ()
     {
-        //List<AudioSource> songs = new List<AudioSource>();
+        List<AudioSource> songs = new List<AudioSource>();
         
         GetComponents(songs);
         
@@ -27,9 +27,10 @@ public class MusicPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        time += Time.deltaTime;
-        if (time >= 3f)
+        time = time + Time.deltaTime;
+        if (time >= 30f)
         {
+            time = 0;
             Music();
         }
     }
@@ -38,12 +39,12 @@ public class MusicPlayer : MonoBehaviour
     {
         GetComponents(songs);
         
-
         songs[songNum].Stop();
-        //if (songNum == 1)
-        //    songNum = -1; // will increment to 0 at songNum++
-        //songNum++;
-        //songs[songNum].Play();
+        if (songNum == 1) //number of songs + 1
+            songNum = 0;
+        else
+            songNum++;
+        songs[songNum].Play();
      }
     
 }
