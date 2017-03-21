@@ -11,6 +11,8 @@ TagManager:
   - LDoor
   - RightCamPos
   - RDoor
+  - Stool
+  - Bed
   layers:
   - Default
   - TransparentFX

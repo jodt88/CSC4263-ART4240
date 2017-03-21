@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 114921868885422894}
   - component: {fileID: 114184078767758624}
   - component: {fileID: 114770943884927882}
+  - component: {fileID: 60951887713765502}
   m_Layer: 0
   m_Name: patron
   m_TagString: Patron
@@ -74,6 +75,58 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!60 &60951887713765502
+PolygonCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1215620259880104}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  m_Points:
+    m_Paths:
+    - - {x: 0.28, y: -0.84}
+      - {x: 0.35999998, y: -0.82}
+      - {x: 0.48, y: -0.76}
+      - {x: 0.47, y: -0.71}
+      - {x: 0.37, y: -0.57}
+      - {x: 0.34, y: -0.38}
+      - {x: 0.29, y: -0.22}
+      - {x: 0.51, y: -0.14}
+      - {x: 0.51, y: -0.13}
+      - {x: 0.45999998, y: -0.02}
+      - {x: 0.5, y: 0.04}
+      - {x: 0.51, y: 0.099999994}
+      - {x: 0.51, y: 0.24}
+      - {x: 0.48, y: 0.29}
+      - {x: 0.51, y: 0.39}
+      - {x: 0.51, y: 0.57}
+      - {x: 0.48999998, y: 0.63}
+      - {x: 0.44, y: 0.74}
+      - {x: 0.32, y: 0.84}
+      - {x: 0.03, y: 0.95}
+      - {x: -0.21, y: 0.95}
+      - {x: -0.44, y: 0.9}
+      - {x: -0.51, y: 0.81}
+      - {x: -0.51, y: 0.35}
+      - {x: -0.47, y: 0.14999999}
+      - {x: -0.47, y: 0.03}
+      - {x: -0.37, y: -0.089999996}
+      - {x: -0.39999998, y: -0.17999999}
+      - {x: -0.34, y: -0.22}
+      - {x: -0.25, y: -0.45}
+      - {x: -0.26999998, y: -0.56}
+      - {x: -0.39999998, y: -0.76}
+      - {x: -0.19, y: -0.84999996}
+      - {x: -0.08, y: -0.93}
+      - {x: -0.01, y: -0.93}
+      - {x: 0.03, y: -0.87}
+      - {x: 0.11, y: -0.93}
+      - {x: 0.17, y: -0.93}
 --- !u!114 &114145793703397874
 MonoBehaviour:
   m_ObjectHideFlags: 1

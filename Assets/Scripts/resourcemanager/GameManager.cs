@@ -57,7 +57,9 @@ public class Resource{
 	public Transform getPosition(int pos){
 		return child.GetChild (pos);
 	}
-		
+	public string getTag(int pos){
+		return child.GetChild (pos).tag;
+	}
 	public int availablePosition(){
 		bool isAvailable = false;
 		int i;
