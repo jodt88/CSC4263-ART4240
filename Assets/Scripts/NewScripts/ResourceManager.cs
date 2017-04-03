@@ -1,19 +1,22 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 
-public class GameManager : MonoBehaviour {
+public class ResourceManager : MonoBehaviour {
 	
 
 	public static List<Resource> resourceTable = new List<Resource>();
-
+	//public static List<LinePosition> line = new List<LinePosition>(); 
+	public static int playerScore;
+	public static int opponentScore;
 	// Use this for initialization
 	void Start(){
-		
+	
 	}
 	void Awake () {
 		//popluates the hash table with each resource
+
 		foreach (Transform child in transform) {
 			Resource resource = new Resource ();
 			resource.setChild (child);
@@ -26,10 +29,6 @@ public class GameManager : MonoBehaviour {
 	void Update () {
 		
 	}
-
-	//creates a bool list of of size length all instanciated to true.
-	
-
 }
 
 public class Resource{
@@ -61,18 +60,43 @@ public class Resource{
 		return child.GetChild (pos).tag;
 	}
 	public int availablePosition(){
-		bool isAvailable = false;
-		int i;
-		for (i = 0; i < available.Count; i++) {
+		int pos = -1;
+		for (int i = 0; i < available.Count; i++) {
 			if (available [i]) {
-				isAvailable = true; 
+				pos=i;
 				break;
 			}
 		}
-		if (!isAvailable)
-			i = -1;
-
-		return i;
+		return pos;
 	}
 		
 }
+
+/*public class LinePosition{
+	private Vector2 position;
+	private string person;
+
+	public LinePosition(){
+		person = "";
+		position = new Vector2 ();
+	}
+
+	public void setPerson(string person){
+		this.person = person;
+	}
+
+	public void setPosition(Vector2 position)
+	{
+		this.position = position;
+	}
+
+	public string getPerson(){
+		return person;
+	}
+
+	public Vector2 getPosition(){
+		return position;
+	}
+
+	
+}*/

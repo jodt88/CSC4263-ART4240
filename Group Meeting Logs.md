@@ -51,13 +51,3 @@ Present Members: Christy Henson, Ethan Rainey, Christopher Schayer, Jody Toms
 Summary: Determined what in-game features needed to be demonstrated for the prototype demonstration. We then divided up our roles accordingly. Planned to meet 3/20/17 to rehearse the presentation. Gregory was informed of his role.
 
 ---
-
-*3/20/17*
-
-Duration: 3:00 PM - 6:30 PM
-
-Present Members: ALL
-
-Summary: Laid out the order in which each of us would speak during the presentation, as well as what we would say and the times associated with each person. Afterward, the programmers worked to integrate their individual contributions into one prototype project.
-
----

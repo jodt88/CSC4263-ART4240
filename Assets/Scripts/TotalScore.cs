@@ -9,6 +9,5 @@ using UnityEngine;
 public class TotalScore : MonoBehaviour
 {
     public static int score = 0;
-
-    public static int ballCount = 2;
+	public static int opponentScore = 0;
 }

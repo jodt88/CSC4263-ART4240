@@ -20,10 +20,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4786038305352386}
   - component: {fileID: 212564796840662004}
-  - component: {fileID: 114921868885422894}
   - component: {fileID: 114184078767758624}
-  - component: {fileID: 114770943884927882}
   - component: {fileID: 60951887713765502}
+  - component: {fileID: 114749453952682800}
   m_Layer: 0
   m_Name: patron
   m_TagString: Patron
@@ -163,7 +162,7 @@ MonoBehaviour:
   restrict: 1
   closerPointOnInvalid: 1
   debugPath: 1
---- !u!114 &114770943884927882
+--- !u!114 &114749453952682800
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -171,19 +170,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1215620259880104}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21e2b756980f440dbb8d4758c1f4a275, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  WPoints: []
---- !u!114 &114921868885422894
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1215620259880104}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c1352e997f808554cb14d6361d5b126d, type: 3}
+  m_Script: {fileID: 11500000, guid: f283357f69c484ed984835abaa01031e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!212 &212472270276259400
