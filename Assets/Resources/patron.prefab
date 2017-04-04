@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 212564796840662004}
   - component: {fileID: 114184078767758624}
   - component: {fileID: 60951887713765502}
-  - component: {fileID: 114064051268216156}
+  - component: {fileID: 114874618366867364}
   m_Layer: 0
   m_Name: patron
   m_TagString: Patron
@@ -126,17 +126,6 @@ PolygonCollider2D:
       - {x: 0.03, y: -0.87}
       - {x: 0.11, y: -0.93}
       - {x: 0.17, y: -0.93}
---- !u!114 &114064051268216156
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1215620259880104}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58acb4de946c4f542b4ca4bcdb06b859, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114145793703397874
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -173,6 +162,17 @@ MonoBehaviour:
   restrict: 1
   closerPointOnInvalid: 1
   debugPath: 1
+--- !u!114 &114874618366867364
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1215620259880104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f283357f69c484ed984835abaa01031e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212472270276259400
 SpriteRenderer:
   m_ObjectHideFlags: 1
