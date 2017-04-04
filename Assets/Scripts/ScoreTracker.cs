@@ -5,25 +5,10 @@ using UnityEngine;
 
 public class ScoreTracker : MonoBehaviour
 {
-    public TextMesh scoreText;
+	public GUIStyle HUDStyle;
 
-    void Start()
-    {
-        scoreText = GameObject.Find("ScoreDisplay").GetComponent<TextMesh>();
-        scoreText.GetComponent<TextMesh>().text = "Score: " + TotalScore.score;
-    }
-
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.gameObject.name == "patron0")
-        {
-            TotalScore.score += 50;
-        }
-    }
-
-    void Update()
-    {
-        scoreText = GameObject.Find("ScoreDisplay").GetComponent<TextMesh>();
-        scoreText.GetComponent<TextMesh>().text = "Score: " + TotalScore.score;
-    }
+	void OnGUI () 
+	{
+		GUI.Label (new Rect (90, 90, 100, 100), "Money: ", HUDStyle);
+	}
 }
