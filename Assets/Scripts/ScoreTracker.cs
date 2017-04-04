@@ -9,6 +9,6 @@ public class ScoreTracker : MonoBehaviour
 
 	void OnGUI () 
 	{
-		GUI.Label (new Rect (90, 90, 100, 100), "Money: ", HUDStyle);
+		GUI.Label (new Rect (90, 90, 100, 100), "Money: " + Inn.playerScore.ToString(), HUDStyle);
 	}
 }
