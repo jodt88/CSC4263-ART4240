@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class GameClock : MonoBehaviour {
@@ -12,7 +13,11 @@ public class GameClock : MonoBehaviour {
 
 	void Update () 
 	{
-		if (minute >= 0 && hour >= 0) 
+		if (minute == 0 && hour == 0) 
+		{
+			SceneManager.LoadScene ("End Level");
+		} 
+		else 
 		{
 			if (Time.time - lastChange > 1.0) 
 			{
