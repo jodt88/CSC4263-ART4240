@@ -257,6 +257,7 @@ GameObject:
   - component: {fileID: 133511588}
   - component: {fileID: 133511591}
   - component: {fileID: 133511589}
+  - component: {fileID: 133511590}
   m_Layer: 0
   m_Name: ScoreDisplay
   m_TagString: Untagged
@@ -286,7 +287,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 133511587}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 335449258553a9a47a58463d60d514cc, type: 3}
+  m_Script: {fileID: 11500000, guid: 0438a5551757a57478b12b4b074f5c35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &133511590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 133511587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69536664860d82949b9290f89a044fc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   HUDStyle:
@@ -473,7 +485,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 496761415}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f0759320595cd345894bbe6c636c5a2, type: 3}
+  m_Script: {fileID: 11500000, guid: d32b4bc067eb8564082b4f0be742e515, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   requests:
@@ -2456,7 +2468,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1320889933}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 461bc3a51da07f24b83265f5fe378961, type: 3}
+  m_Script: {fileID: 11500000, guid: 4a41f6c86b893a748b9e17cf2d922e58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!50 &1320889935
@@ -2612,7 +2624,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1383181500}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4de754b96e4c0d40ba237b28ec1eb58, type: 3}
+  m_Script: {fileID: 11500000, guid: 0b35352d73f1d8241855e6fb2dd3b32b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &1482404196 stripped
@@ -2864,7 +2876,7 @@ GameObject:
   - component: {fileID: 1732411313}
   - component: {fileID: 1732411312}
   m_Layer: 0
-  m_Name: EXTERMINATE!
+  m_Name: PatronDespawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
