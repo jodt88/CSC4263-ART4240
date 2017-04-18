@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class InstanceManager : MonoBehaviour {
 
-    float dtSpawn; //time since last spawn
+	float dtSpawn; //time since last spawn
 	int count; //the number of patrons that have spawned in the day.
-    string request; //the request of the patron 
+	string request; //the request of the patron 
 	public static Queue<string> requestList = new Queue<string> ();//holds all the requests for the day  this will be used to act as a way to determine which patron will be spawned next
 	public  string[] requests = {"Bed","Food","Quest"};
 	public static Hashtable thoughtBubble = new Hashtable ();
 
 	void Awake(){
-		
+
 		for(int i = 0;i<50;i++)
 		{
 			//populates the queue with the order of requests that will be for the day this will be subject to change on later implementation
@@ -23,37 +23,37 @@ public class InstanceManager : MonoBehaviour {
 
 	}
 
-   public GameObject patronInstance;
+	public GameObject patronInstance;
 
-    void Start ()
-    {
-        dtSpawn = 0;
+	void Start ()
+	{
+		dtSpawn = 0;
 		count = 0;
 
-    }
-	
-	// Update is called once per frame
+	}
+
+
 	void Update ()
-    {
-        dtSpawn += Time.deltaTime;
-		
+	{
+		dtSpawn += Time.deltaTime;
+
+		//checks if last position in line is available.
 		if (dtSpawn>=Timers.spawnTimer && requestList.Count>=0){
-            //checks if last position in line is available.
-			request = requestList.Peek();
+			request = requestList.Peek();//Peek is used as the list is dequeued in the actual spawn method
 			int pos=ResourceManager.resourceTable [3].availablePosition ();
 			if(pos>=0){
-                Spawn();
-            }
-            else
-            {
+				Spawn();
+			}
+			else
+			{
 				Inn.opponentScore+=getRequestValue();
-            }
+			}
 			count++;
-            dtSpawn = 0;
-        }
-            
-           
- 
+			dtSpawn = 0;
+		}
+
+
+
 	}
 
 	int getRequestValue()
@@ -74,11 +74,12 @@ public class InstanceManager : MonoBehaviour {
 		return value;
 	}
 
-    void Spawn()
-    { 
+	void Spawn()
+	{ 
 		//spawns the patron prefab 
-        patronInstance = Instantiate(Resources.Load("patron"),transform.position,transform.rotation) as GameObject;
+		patronInstance = Instantiate(Resources.Load("patron"),transform.position,transform.rotation) as GameObject;
 		//gives each instace of patron a unique name
 		patronInstance.name = "patron"+request + count;   
-    }
+	}
+
 }

@@ -16,7 +16,8 @@ public class agents : MonoBehaviour {
 	private string request; //resource patron wants to use
 	private bool attended; //has the innkeeper acknowledged the patron
 	private bool satisfied; //was the patron able to use their desired resource
-
+	private int value; 
+	private bool arrived;
 
 	public PolyNavAgent agent{
 		get
@@ -33,6 +34,8 @@ public class agents : MonoBehaviour {
 		request = InstanceManager.requestList.Dequeue ();
 		attended = false;
 		satisfied = false;
+		arrived = false;
+		setValue ();
 
 	}
 	void Start () { 
@@ -45,8 +48,7 @@ public class agents : MonoBehaviour {
 		//if timer is started
 		if (activateTimer) {
 			if (timer > 0f) {
-				
-				if (attended)
+				if (attended&&!arrived)
 					attemptRequest ();
 				timer -= Time.deltaTime;
 			} else
@@ -54,11 +56,15 @@ public class agents : MonoBehaviour {
 		} else if (!activateTimer && timer <= 0f) {
 			leaveTavern (satisfied);
 		} 
-		 
+
 	}
 
 	public bool getAttended(){
 		return attended;
+	}
+
+	public int getValue(){
+		return value;
 	}
 
 	public string getRequest(){
@@ -123,6 +129,7 @@ public class agents : MonoBehaviour {
 		}
 		else{
 			position = ResourceManager.resourceTable[resourcePosition].getPosition(0).position;
+			resourceInUse = request;
 			agent.SetDestination (position, onReached);
 		}
 	}
@@ -139,12 +146,18 @@ public class agents : MonoBehaviour {
 				break;
 			case "Food":
 				setTimer (Timers.foodTimer);
+				arrived = true;
+				wasSatisfied ();
 				break;
 			case "Quest":
 				setTimer (Timers.questTimer);
+				arrived = true;
+				wasSatisfied ();
 				break;
 			case "Bed":
 				setTimer (Timers.bedTimer);
+				arrived = true;
+				wasSatisfied ();
 				break;
 			}		
 		}	
@@ -158,9 +171,9 @@ public class agents : MonoBehaviour {
 			setTimer(Timers.noResourceTimer);
 		}
 	}
-		
+
 	public void leaveTavern(bool satisfied){
-		var pos = GameObject.Find ("EXTERMINATE!").transform.position;	
+		var pos = GameObject.Find ("PatronDespawner").transform.position;	
 		if(satisfied){
 			//happyEmote
 		}
@@ -185,5 +198,19 @@ public class agents : MonoBehaviour {
 
 	public string getResourceInUse(){
 		return resourceInUse;
+	}
+
+	public void setValue(){
+		switch (request) {
+		case "Bed":
+			value = Inn.bedValue;
+			break;
+		case "Food":
+			value = Inn.foodValue;
+			break;
+		case "Quest":
+			value = Inn.questValue;
+			break;
+		}
 	}
 }
