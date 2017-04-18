@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 040da1c7d5db89f4c9b3fd6bd0ecf77d
+timeCreated: 1492536736
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Bridgnorth_Blocked
+  fontNames:
+  - Bridgnorth_Blocked
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

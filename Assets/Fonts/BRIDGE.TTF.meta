@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 04476b6c1f475634598de4920466224f
+timeCreated: 1492536737
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Bridgnorth
+  fontNames:
+  - Bridgnorth
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
