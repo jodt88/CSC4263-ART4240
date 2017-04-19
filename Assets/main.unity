@@ -355,8 +355,8 @@ MonoBehaviour:
       m_Right: 0
       m_Top: 0
       m_Bottom: 0
-    m_Font: {fileID: 0}
-    m_FontSize: 0
+    m_Font: {fileID: 12800000, guid: 73eeb1e114e4e674d8c3f86ee185c20e, type: 3}
+    m_FontSize: 20
     m_FontStyle: 0
     m_Alignment: 0
     m_WordWrap: 0
@@ -2861,7 +2861,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: 2c346e133a69f334fbdaf94471ecf9c2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d65bb100253ea294fb7c470f302b347d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

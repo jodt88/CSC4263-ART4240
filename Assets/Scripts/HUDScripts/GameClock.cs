@@ -4,29 +4,25 @@ using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class GameClock : MonoBehaviour {
-
-	public static double hour = 10;
-	public static double minute = 00;
-	//public static double second = 00;
-
 	public static double lastChange = 0;
 
 	void Update () 
 	{
-		if (minute == 0 && hour == 0) 
+		if (Inn.minute == 0 && Inn.hour == 0) 
 		{
+			Inn.day++;
 			SceneManager.LoadScene ("End Level");
 		} 
 		else 
 		{
 			if (Time.time - lastChange > 1.0) 
 			{
-				if (minute == 0) 
+				if (Inn.minute == 0) 
 				{
-					minute = 59;
-					hour--;
+					Inn.minute = 59;
+					Inn.hour--;
 				}
-				minute--;
+				Inn.minute--;
 				lastChange = Time.time;
 			}
 		}
