@@ -52,11 +52,11 @@ public class agents : MonoBehaviour {
 				if (attended&&!arrived)
 					attemptRequest ();
 				timer -= Time.deltaTime;
-			} else
+            } else
 				activateTimer = false;
 		} else if (!activateTimer && timer <= 0f&&!isLeaving) {
 			leaveTavern (satisfied);
-		} 
+        } 
 
 	}
 
@@ -152,8 +152,11 @@ public class agents : MonoBehaviour {
 	}
 
 	public void onReached(bool success){
-		if (success){ 
-			switch(resourceInUse)
+		if (success){
+
+            this.transform.GetChild(0).gameObject.gameObject.GetComponent<SpriteRenderer>().enabled = true;
+
+            switch (resourceInUse)
 			{
 			case "Line":
 				setTimer(Timers.lineTimer);	
@@ -190,7 +193,8 @@ public class agents : MonoBehaviour {
 	}
 
 	public void leaveTavern(bool satisfied){
-		var pos = GameObject.Find ("PatronDespawner").transform.position;
+        this.transform.GetChild(0).gameObject.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+        var pos = GameObject.Find ("PatronDespawner").transform.position;
 		isLeaving = true;
 		if (resourceInUse == "Stool")
 			ResourceManager.resourceTable [0].swapAvailable (resourcePosition);
