@@ -19,7 +19,11 @@ public class agents : MonoBehaviour {
 	private int value; 
 	private bool arrived;
 	private bool isLeaving;
-	public PolyNavAgent agent{
+    public Sprite occuStool;
+    public Sprite emtStool;
+
+
+    public PolyNavAgent agent{
 		get
 		{
 			if (_agent == null)
@@ -38,9 +42,10 @@ public class agents : MonoBehaviour {
 		isLeaving = false;
 		setValue ();
 
-	}
+    }
 	void Start () { 
 		goToStool ();
+
 	}
 
 	// Update is called once per frame
@@ -152,9 +157,8 @@ public class agents : MonoBehaviour {
 	}
 
 	public void onReached(bool success){
-		if (success){
-
-            this.transform.GetChild(0).gameObject.gameObject.GetComponent<SpriteRenderer>().enabled = true;
+		if (success){    
+            //ResourceManager.resourceTable[0].getPosition(resourcePosition).GetComponent<SpriteRenderer>().sprite = (Sprite)Resources.Load("occupied stool");
 
             switch (resourceInUse)
 			{
@@ -163,7 +167,12 @@ public class agents : MonoBehaviour {
 				break;
 			case "Stool": 
 				setTimer(Timers.stoolTimer);
-				break;
+                this.transform.GetChild(0).gameObject.gameObject.GetComponent<SpriteRenderer>().enabled = true;
+                this.GetComponent<SpriteRenderer>().enabled = false;
+                ResourceManager.resourceTable[0].getPosition(resourcePosition).GetComponent<SpriteRenderer>().sprite = occuStool;
+                    //ResourceManager.resourceTable[0].getPosition(resourcePosition).GetComponent<SpriteRenderer>().enabled = false;
+                    //this.GetComponent<SpriteRenderer>().sprite = occuStool;
+                break;
 			case "Food":
 				setTimer (Timers.foodTimer);
 				arrived = true;
@@ -194,12 +203,16 @@ public class agents : MonoBehaviour {
 
 	public void leaveTavern(bool satisfied){
         this.transform.GetChild(0).gameObject.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+        this.GetComponent<SpriteRenderer>().enabled = true;
         var pos = GameObject.Find ("PatronDespawner").transform.position;
 		isLeaving = true;
-		if (resourceInUse == "Stool")
-			ResourceManager.resourceTable [0].swapAvailable (resourcePosition);
+        if (resourceInUse == "Stool")
+        {
+            ResourceManager.resourceTable[0].swapAvailable(resourcePosition);
+            ResourceManager.resourceTable[0].getPosition(resourcePosition).GetComponent<SpriteRenderer>().sprite = emtStool;
+        }
 
-		if(satisfied){
+        if (satisfied){
 			//happyEmote
 		}
 		else

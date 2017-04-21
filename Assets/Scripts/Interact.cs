@@ -39,10 +39,16 @@ public class Interact : MonoBehaviour {
 
 	void interactPatron(){
 		//checks that left button was clicked while behind bard
-		if (gameObject.GetComponent<agents>().getResourceInUse()=="Stool"&&barSensor.behindBar) {
-					//will just auto interact with patron this will be replaced by ui. 
-					gameObject.GetComponent<agents> ().wasAttended ();
-				}
+		if (gameObject.GetComponent<agents>().getResourceInUse()=="Stool"&&barSensor.behindBar)
+        {
+            //will just auto interact with patron this will be replaced by ui. 
+
+            //check if request can be fulfilled before actually attending
+
+
+
+            gameObject.GetComponent<agents> ().wasAttended ();
+	    }
 	}
 }
 
