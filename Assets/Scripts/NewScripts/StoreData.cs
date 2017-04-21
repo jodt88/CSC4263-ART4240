@@ -16,6 +16,8 @@ public class StoreData : MonoBehaviour
     int tablePrice = 100;
     int musicPrice = 300;
 
+    List<AudioSource> audio = new List<AudioSource>();
+
     public static bool musicFadeInTrigger; //Utilized by MusicPlayer Script
 
 // Use this for initialization
@@ -31,12 +33,15 @@ public class StoreData : MonoBehaviour
         {
             if (money >= bedPrice && bedUpgrades < maxBedUpgrades)
             {
+                GetComponents(audio);
                 money = money - bedPrice;
-                bedUpgrades++;//cha-ching audio}
+                bedUpgrades++;
+                audio[1].Play(); //cha-ching
             }
             else
             {
-                //error audio
+                GetComponents(audio);
+                audio[0].Play(); //error
             }
         }
         
@@ -45,13 +50,15 @@ public class StoreData : MonoBehaviour
         {
             if(money >= tablePrice && tableUpgrades<maxTableUpgrades)
             {
+                GetComponents(audio);
                 money = money - tablePrice;
                 tableUpgrades++;
-                //cha-ching audio
+                audio[1].Play(); //cha-ching
             }
             else
             {
-                //error audio
+                GetComponents(audio);
+                audio[0].Play(); //error
             }
         }
         
@@ -60,23 +67,29 @@ public class StoreData : MonoBehaviour
         {
             if (money >= musicPrice && musicUpgrades<maxMusicUpgrades)
             {
+                GetComponents(audio);
                 money = money - musicPrice;
                 musicUpgrades++;
-                //cha-ching audio
+                audio[1].Play(); //cha-ching
             }
             else
             {
-                //error audio
+                GetComponents(audio);
+                audio[0].Play(); //error
             }
         }
 
         //Start Next Day
-        if( Input.GetKeyDown(KeyCode.Alpha0))
+        if( Input.GetKeyDown(KeyCode.Alpha4))
         {
             Inn.playerScore = money;
             musicFadeInTrigger = true;
-            //SceneManager.SetActiveScene        
-            //SceneManager.LoadScene("main", LoadSceneMode.Additive);
+
+
+            //JODY  JODY JODY JODY JODY JODY JODY JODY JODY JODY JODY JODY JODY JODY JODY JODY JODY JODY JODY JODY JODY JODY JODY 
+            //Can you transistion back to the game here, starting the new day?
+            //Thanks, Greg
+
         }
     }
 }
