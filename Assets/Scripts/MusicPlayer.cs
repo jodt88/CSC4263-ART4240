@@ -19,7 +19,6 @@ public class MusicPlayer : MonoBehaviour
     int upgradeState; // upgrades state purchased from store
     bool songNum; // false is song 1, true is song 2
     int trackToPlay; // determined by upgradeState and songNum
-    float time; // TBR remove
     bool fadingIn, fadingOut;// used determine if the fading in or fading out of a song should occur
     float volumeIn, volumeOut;// used to alter the volume during fading
     int inTrack, outTrack;// used to keep track of the song which is fading in or out
@@ -40,9 +39,7 @@ public class MusicPlayer : MonoBehaviour
         trackToPlay = inTrack = outTrack = 0;
 
         songs[trackToPlay].Play();
-
-        time = 0;
-
+        
         fadingIn = fadingOut = false;
 
         volumeIn = 0f;
@@ -54,15 +51,15 @@ public class MusicPlayer : MonoBehaviour
     // Determines when day ends, and enables fade transitions in conjunction with Music() method.
     void Update()
     {
-        // TBR end of day sequence
-        time = time + Time.deltaTime;
-        if (time >= 15f)
+        if(GameClock.musicFadeOutTrigger == true)
         {
-            time = 0;
-            Music();
+            MusicOut();
         }
         
-        
+        if(StoreData.musicFadeInTrigger == true)
+        {
+            MusicIn();
+        }
 
         //fading in a new song
         if(fadingIn == true)
@@ -103,17 +100,24 @@ public class MusicPlayer : MonoBehaviour
     }
 
     //Forces transition from one song to another, checking the upgrade state.
-    void Music()
+    void MusicOut()
     {
+        GameClock.musicFadeOutTrigger = false;
+
         GetComponents(songs);
 
         //fade out current track
         outTrack = trackToPlay;
         fadingOut = true;
+    }
 
+
+    void MusicIn()
+    {
+        StoreData.musicFadeInTrigger = false;
         //update variables to determine next track to play
         songNum = !songNum;
-        upgradeState = upgradeState + 1; // TBR a call to the store music upgrade variable
+        upgradeState = StoreData.musicUpgrades;
         if(songNum == false) // song 1
         {
             trackToPlay = upgradeState;

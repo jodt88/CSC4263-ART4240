@@ -6,6 +6,7 @@ using UnityEngine;
 public class GameClock : MonoBehaviour
 {
     public static double lastChange = 0;
+    public static bool musicFadeOutTrigger; //Utilized by the MusicPlayer Script
 
     void Start()
     {
@@ -21,6 +22,8 @@ public class GameClock : MonoBehaviour
             Inn.hour = 0;
             Inn.minute = 5;
         }
+
+        musicFadeOutTrigger = false;
     } 
 
     void Update()
@@ -60,7 +63,10 @@ public class GameClock : MonoBehaviour
 
         // check what the current scene is, and load the appropriate scene
         if (SceneManager.GetActiveScene().name == "main")
+        {
             SceneManager.LoadScene("End of Day Recap");
+            musicFadeOutTrigger = true;
+        }
         else if (SceneManager.GetActiveScene().name == "End of Day Recap")
             SceneManager.LoadScene("Store");
     }

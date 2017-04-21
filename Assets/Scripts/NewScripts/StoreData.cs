@@ -16,6 +16,8 @@ public class StoreData : MonoBehaviour
     int tablePrice = 100;
     int musicPrice = 300;
 
+    public static bool musicFadeInTrigger; //Utilized by MusicPlayer Script
+
 // Use this for initialization
     void Start()
     {
@@ -72,6 +74,7 @@ public class StoreData : MonoBehaviour
         if( Input.GetKeyDown(KeyCode.Alpha0))
         {
             Inn.playerScore = money;
+            musicFadeInTrigger = true;
             //SceneManager.SetActiveScene        
             //SceneManager.LoadScene("main", LoadSceneMode.Additive);
         }
