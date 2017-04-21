@@ -4,15 +4,14 @@ using UnityEngine;
 
 
 public class ResourceManager : MonoBehaviour {
-	
 
-	public static List<Resource> resourceTable = new List<Resource>();
-	//public static List<LinePosition> line = new List<LinePosition>(); 
+
+	public static List<Resource> resourceTable = new List<Resource>(); 
 	public static int playerScore;
 	public static int opponentScore;
 	// Use this for initialization
 	void Start(){
-	
+
 	}
 	void Awake () {
 		//popluates the hash table with each resource
@@ -24,10 +23,10 @@ public class ResourceManager : MonoBehaviour {
 			resourceTable.Add (resource);
 		}
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
-		
+
 	}
 }
 
@@ -59,6 +58,7 @@ public class Resource{
 	public string getTag(int pos){
 		return child.GetChild (pos).tag;
 	}
+
 	public int availablePosition(){
 		int pos = -1;
 		for (int i = 0; i < available.Count; i++) {
@@ -69,34 +69,47 @@ public class Resource{
 		}
 		return pos;
 	}
-		
+
+	public bool isEmpty(){
+		bool isEmpty =true;
+		if (availableLinePositionRev () > 0)
+			isEmpty = false;
+		return isEmpty;
+	}
+	public int availableLinePosition(){
+		int pos = 0;
+		for (int i = available.Count - 1; i >= 0; i--) {
+			if (available [i]) {
+				pos = i;
+				break;
+			}
+		}
+		return pos;
+	}
+
+	public int availableLinePositionRev(){
+		int pos = 0;
+		for (int i = available.Count - 1; i >= 0; i--) {
+			if (!available [i]) {
+				pos = i+1;
+				break;
+			}
+		}
+		return pos;
+	}
+
+	public string debugResourceAvailability()
+	{
+		string availableArray=""; 
+		foreach (bool child in  available) {
+			if (child)
+				availableArray += " t";
+			else
+				availableArray += " f";
+		}
+		return availableArray;
+	}
 }
 
-/*public class LinePosition{
-	private Vector2 position;
-	private string person;
 
-	public LinePosition(){
-		person = "";
-		position = new Vector2 ();
-	}
 
-	public void setPerson(string person){
-		this.person = person;
-	}
-
-	public void setPosition(Vector2 position)
-	{
-		this.position = position;
-	}
-
-	public string getPerson(){
-		return person;
-	}
-
-	public Vector2 getPosition(){
-		return position;
-	}
-
-	
-}*/

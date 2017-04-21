@@ -18,7 +18,7 @@ public class agents : MonoBehaviour {
 	private bool satisfied; //was the patron able to use their desired resource
 	private int value; 
 	private bool arrived;
-
+	private bool isLeaving;
 	public PolyNavAgent agent{
 		get
 		{
@@ -35,6 +35,7 @@ public class agents : MonoBehaviour {
 		attended = false;
 		satisfied = false;
 		arrived = false;
+		isLeaving = false;
 		setValue ();
 
 	}
@@ -53,7 +54,7 @@ public class agents : MonoBehaviour {
 				timer -= Time.deltaTime;
 			} else
 				activateTimer = false;
-		} else if (!activateTimer && timer <= 0f) {
+		} else if (!activateTimer && timer <= 0f&&!isLeaving) {
 			leaveTavern (satisfied);
 		} 
 
@@ -83,30 +84,46 @@ public class agents : MonoBehaviour {
 		satisfied = true;
 	}
 
-	void goToStool(){
-		//verifies if there is a stool available
-		resourcePosition = ResourceManager.resourceTable [0].availablePosition ();
+	public void goToStool(){
+		//verifies if the line is empty
+		if (ResourceManager.resourceTable [3].isEmpty ()&&ResourceManager.resourceTable[0].availablePosition()>-1) {
+			//check for stool availability
+			resourcePosition = ResourceManager.resourceTable [0].availablePosition ();
 
-		if (resourcePosition < 0) {
+			if (resourcePosition >= 0) {
+				//makes resource unavailable to everyone else
+				ResourceManager.resourceTable [0].swapAvailable (resourcePosition);
+				//gets vector coordinate for position 
+				setResourceInUse ("Stool");
+				position = ResourceManager.resourceTable [0].getPosition (resourcePosition).position;
+				//move to position of next resource
+
+			} 
+		}
+		else {
 			//Find next available line
-			resourcePosition = ResourceManager.resourceTable [3].availablePosition ();
+			resourcePosition = ResourceManager.resourceTable [3].availableLinePosition ();
 			ResourceManager.resourceTable [3].swapAvailable (resourcePosition);
-			resourceInUse = "Line";
+			setResourceInUse("Line");
 			//gets vector coordinate for position 
 			position = ResourceManager.resourceTable[3].getPosition(resourcePosition).position;
-		} else {
-			//makes resource unavailable to everyone else
-			ResourceManager.resourceTable [0].swapAvailable (resourcePosition);
-			//gets vector coordinate for position 
-			resourceInUse = "Stool";
-			position = ResourceManager.resourceTable [0].getPosition (resourcePosition).position;
-			//move to position of next resource
 		}
+		agent.SetDestination (position,onReached);
+	}
+	public void goToStool(int spot){
+		resourcePosition = spot;
+		ResourceManager.resourceTable [0].swapAvailable (spot);
+		//gets vector coordinate for position 
+		setResourceInUse("Stool");
+		activateTimer = false;
+		position = ResourceManager.resourceTable [0].getPosition (spot).position;
+		//move to position of next resource
 		agent.SetDestination (position,onReached);
 	}
 
 	public void attemptRequest(){
 		activateTimer = false;
+		ResourceManager.resourceTable [0].swapAvailable (resourcePosition);
 		switch (request) {
 		case "Bed":
 			resourcePosition = 1;
@@ -129,7 +146,7 @@ public class agents : MonoBehaviour {
 		}
 		else{
 			position = ResourceManager.resourceTable[resourcePosition].getPosition(0).position;
-			resourceInUse = request;
+			setResourceInUse(request);
 			agent.SetDestination (position, onReached);
 		}
 	}
@@ -173,7 +190,11 @@ public class agents : MonoBehaviour {
 	}
 
 	public void leaveTavern(bool satisfied){
-		var pos = GameObject.Find ("PatronDespawner").transform.position;	
+		var pos = GameObject.Find ("PatronDespawner").transform.position;
+		isLeaving = true;
+		if (resourceInUse == "Stool")
+			ResourceManager.resourceTable [0].swapAvailable (resourcePosition);
+
 		if(satisfied){
 			//happyEmote
 		}
@@ -184,12 +205,12 @@ public class agents : MonoBehaviour {
 		agent.SetDestination (pos);
 	}
 
-	public void destroyCallback(bool success){
+	/*public void destroyCallback(bool success){
 		if (success) {
 			//check
 			DestroyObject (this.gameObject);
 		}
-	}
+	}*/
 
 	public void setTimer(float time){
 		timer = time;
@@ -198,6 +219,10 @@ public class agents : MonoBehaviour {
 
 	public string getResourceInUse(){
 		return resourceInUse;
+	}
+
+	public void setResourceInUse(string resource){
+		resourceInUse = resource;
 	}
 
 	public void setValue(){
@@ -213,4 +238,13 @@ public class agents : MonoBehaviour {
 			break;
 		}
 	}
+	public void traverseLine(int spot){
+		ResourceManager.resourceTable [3].swapAvailable (spot);
+		position = ResourceManager.resourceTable[3].getPosition(spot-1).position;
+		ResourceManager.resourceTable [3].swapAvailable (spot-1);
+		agent.SetDestination (position);
+
+
+	}
+
 }
