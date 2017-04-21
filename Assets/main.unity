@@ -706,14 +706,14 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   navObstacles:
+  - {fileID: 143914094}
   - {fileID: 2064741452}
-  - {fileID: 419669399}
-  - {fileID: 1209228810}
+  - {fileID: 1482404199}
   - {fileID: 1072546544}
   - {fileID: 2019025485}
-  - {fileID: 1482404199}
+  - {fileID: 419669399}
+  - {fileID: 1209228810}
   - {fileID: 702063163}
-  - {fileID: 143914094}
   inflateRadius: 0.1
   regenerateFlag: 1
 --- !u!4 &505974337
@@ -2678,6 +2678,7 @@ GameObject:
   - component: {fileID: 1320889936}
   - component: {fileID: 1320889935}
   - component: {fileID: 1320889934}
+  - component: {fileID: 1320889939}
   m_Layer: 0
   m_Name: Barkeeper
   m_TagString: Player
@@ -2808,6 +2809,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1320889939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1320889933}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89db85aeebc347a4a83b306124dc2b5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1346062976 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4978853549127304, guid: 7d58f0d6603124caaac37e137a95dadf,
