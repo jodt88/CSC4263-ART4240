@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using UnityEngine.UI;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -20,7 +21,21 @@ public class StoreData : MonoBehaviour
 
     public static bool musicFadeInTrigger; //Utilized by MusicPlayer Script
 
-// Use this for initialization
+	public GUIStyle HUDStyle;	// settings for the GUI
+
+	void OnGUI()
+	{
+		// display a recap of the day's information
+		GUI.Label (new Rect (Screen.width/2-50, Screen.height/2-25, 100, 50), "STORE\n\n\n" +
+			"1.) Beds: \t\t Upgrades Left: " + (maxBedUpgrades-bedUpgrades) + "\tCost: " + bedPrice + "\n\n" +
+			"2.) Tables: \t\t Upgrades Left: " + (maxTableUpgrades-tableUpgrades) + "\tCost: " + tablePrice + "\n\n" +
+			"3.) Minstrels: \t Upgrades Left: " + (maxMusicUpgrades-musicUpgrades) + "\tCost: " + musicPrice + "\n\n\n" +
+			"Total Money: " + money + "\n\n\n" +
+			"Press 1, 2, or 3 on the keyboard to buy their matching upgrades.\n\n" +
+			"Press 4 on the keyboard to continue to the next day.", HUDStyle);
+	}
+
+	// Use this for initialization
     void Start()
     {
         money = Inn.playerScore_net;
@@ -48,7 +63,7 @@ public class StoreData : MonoBehaviour
         //Purchase table
         if(Input.GetKeyDown(KeyCode.Alpha2))
         {
-            if(money >= tablePrice && tableUpgrades<maxTableUpgrades)
+            if(money >= tablePrice && tableUpgrades < maxTableUpgrades)
             {
                 GetComponents(audio);
                 money = money - tablePrice;
@@ -65,7 +80,7 @@ public class StoreData : MonoBehaviour
         //Purchase musician
         if(Input.GetKeyDown(KeyCode.Alpha3))
         {
-            if (money >= musicPrice && musicUpgrades<maxMusicUpgrades)
+            if (money >= musicPrice && musicUpgrades < maxMusicUpgrades)
             {
                 GetComponents(audio);
                 money = money - musicPrice;
@@ -84,13 +99,16 @@ public class StoreData : MonoBehaviour
         {
             Inn.playerScore_net = money;
             musicFadeInTrigger = true;
-
-
-            //JODY  JODY JODY JODY JODY JODY JODY JODY JODY JODY JODY JODY JODY JODY JODY JODY JODY JODY JODY JODY JODY JODY JODY 
-            //Can you transistion back to the game here, starting the new day?
-            //Thanks, Greg
-
+			StartCoroutine(performFade2());
         }
     }
+
+	IEnumerator performFade2 ()
+	{
+		// fade out the scene
+		float fadeTime = GameObject.Find("ScreenFader").GetComponent<SceneFade>().BeginFade(1);    
+		yield return new WaitForSeconds(fadeTime);
+		SceneManager.LoadScene("main");
+	}
 }
  

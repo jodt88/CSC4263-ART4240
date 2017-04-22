@@ -13,6 +13,7 @@ TagManager:
   - RDoor
   - Stool
   - Bed
+  - StoreInstruction
   layers:
   - Default
   - TransparentFX
