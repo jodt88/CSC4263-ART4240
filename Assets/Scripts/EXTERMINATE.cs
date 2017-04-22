@@ -9,7 +9,7 @@ public class EXTERMINATE : MonoBehaviour {
 		if (other.gameObject.tag == "Patron") { // Don't destroy the player
 			value = other.GetComponent<agents> ().getValue ();
 			if (other.GetComponent<agents> ().getSatisfied ()) {
-				Inn.playerScore += value;
+				Inn.playerScore_now += value;
 			} else
 				Inn.opponentScore += value;
 			DestroyObject (other.gameObject);

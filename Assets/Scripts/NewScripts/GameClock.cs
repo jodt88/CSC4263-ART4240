@@ -15,12 +15,14 @@ public class GameClock : MonoBehaviour
         {
             Inn.hour = 5;
             Inn.minute = 00;
+			Inn.day++;					// also increment the day
+			Inn.playerScore_now = 0;	// also reset day's profit to 0
         }
         // set hour and minute if scene is the end of day recap scene (currently approx. real-time = 5 seconds)
         else if (SceneManager.GetActiveScene().name == "End of Day Recap")
         {
             Inn.hour = 0;
-            Inn.minute = 5;
+            Inn.minute = 10;
         }
 
         musicFadeOutTrigger = false;
@@ -31,10 +33,6 @@ public class GameClock : MonoBehaviour
         // if clock reaches 0 hours and 0 minutes...
         if (Inn.minute == 0 && Inn.hour == 0)
         {
-            // if the timer ends on the main screen
-            if (SceneManager.GetActiveScene().name == "main")
-                Inn.day++;                          // ...day ends, increment day
-
             StartCoroutine(performFade());      // ...fade into the next scene
         }
         // if clock has time remaining...

@@ -23,7 +23,7 @@ public class StoreData : MonoBehaviour
 // Use this for initialization
     void Start()
     {
-        money = Inn.playerScore;
+        money = Inn.playerScore_net;
     } 
 
     void Update()
@@ -82,7 +82,7 @@ public class StoreData : MonoBehaviour
         //Start Next Day
         if( Input.GetKeyDown(KeyCode.Alpha4))
         {
-            Inn.playerScore = money;
+            Inn.playerScore_net = money;
             musicFadeInTrigger = true;
 
 
