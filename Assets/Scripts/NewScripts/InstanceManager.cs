@@ -10,7 +10,7 @@ public class InstanceManager : MonoBehaviour {
 	public static Queue<string> requestList = new Queue<string> ();//holds all the requests for the day  this will be used to act as a way to determine which patron will be spawned next
 	public  string[] requests = {"Bed","Food","Quest"};
 	public static Hashtable thoughtBubble = new Hashtable ();
-
+    
 	void Awake(){
 
 		for(int i = 0;i<50;i++)

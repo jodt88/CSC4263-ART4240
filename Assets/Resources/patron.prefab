@@ -55,8 +55,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1830064166871060}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.2, y: 1.7, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0.54, y: 1.65, z: 0}
+  m_LocalScale: {x: 0.44981328, y: 0.48770273, z: 1}
   m_Children: []
   m_Father: {fileID: 4786038305352386}
   m_RootOrder: 0
@@ -68,7 +68,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1215620259880104}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.181956, y: -3.7836742, z: 0}
+  m_LocalPosition: {x: 4.8262625, y: -7.578803, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4537596875094420}
@@ -124,6 +124,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   occuStool: {fileID: 21300000, guid: 9a10d3d93c3adfa40b919ce095fd0e81, type: 3}
   emtStool: {fileID: 21300000, guid: 9ff41d7ca2f9a6b4ab1b74b688140a8e, type: 3}
+  happyT: {fileID: 21300000, guid: bc396c39a12fa79418242f6a069ac210, type: 3}
+  sadT: {fileID: 21300000, guid: 0b3204ac794419f43abcde9f14681b53, type: 3}
+  drinkT: {fileID: 21300000, guid: 71bcdd63cc3e6e84e9253e0ce12a57c3, type: 3}
+  bedT: {fileID: 21300000, guid: 32930b5876a36f1478bb73b321e9e72e, type: 3}
+  questT: {fileID: 21300000, guid: f95f750071f05374884586071f6a4aeb, type: 3}
 --- !u!114 &114184078767758624
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -180,7 +185,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: 21300000, guid: 52005133f06cf2a43822a44bf18ea76e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 32930b5876a36f1478bb73b321e9e72e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

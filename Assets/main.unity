@@ -669,15 +669,15 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   navObstacles:
-  - {fileID: 143914094}
-  - {fileID: 702063163}
-  - {fileID: 1482404199}
   - {fileID: 1072546544}
-  - {fileID: 1764081289}
-  - {fileID: 1764081288}
   - {fileID: 1764081287}
   - {fileID: 1764081286}
+  - {fileID: 1764081288}
   - {fileID: 1764081284}
+  - {fileID: 702063163}
+  - {fileID: 1764081289}
+  - {fileID: 143914094}
+  - {fileID: 1482404199}
   inflateRadius: 0.1
   regenerateFlag: 1
 --- !u!4 &505974337

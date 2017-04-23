@@ -21,6 +21,11 @@ public class agents : MonoBehaviour {
 	private bool isLeaving;
     public Sprite occuStool;
     public Sprite emtStool;
+    public Sprite happyT;
+    public Sprite sadT;
+    public Sprite drinkT;
+    public Sprite bedT;
+    public Sprite questT;
 
 
     public PolyNavAgent agent{
@@ -36,7 +41,10 @@ public class agents : MonoBehaviour {
 		timer = 999999f;
 		resourcePosition = 0;
 		request = InstanceManager.requestList.Dequeue ();
-		attended = false;
+        if (request == "Bed") { this.transform.GetChild(0).gameObject.gameObject.GetComponent<SpriteRenderer>().sprite = bedT; }
+        else if (request == "Food") { this.transform.GetChild(0).gameObject.gameObject.GetComponent<SpriteRenderer>().sprite = drinkT; }
+        else { this.transform.GetChild(0).gameObject.gameObject.GetComponent<SpriteRenderer>().sprite = questT; }
+            attended = false;
 		satisfied = false;
 		arrived = false;
 		isLeaving = false;
@@ -83,7 +91,8 @@ public class agents : MonoBehaviour {
 
 	public void wasAttended(){
 		attended = true;
-	}
+        this.transform.GetChild(0).gameObject.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+    }
 
 	public void wasSatisfied(){
 		satisfied = true;
@@ -211,7 +220,7 @@ public class agents : MonoBehaviour {
 	}
 
 	public void leaveTavern(bool satisfied){
-        this.transform.GetChild(0).gameObject.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+        this.transform.GetChild(0).gameObject.gameObject.GetComponent<SpriteRenderer>().enabled = true;
         this.GetComponent<SpriteRenderer>().enabled = true;
         var pos = GameObject.Find ("PatronDespawner").transform.position;
 		isLeaving = true;
@@ -223,12 +232,14 @@ public class agents : MonoBehaviour {
         }
 
         if (satisfied){
-			//happyEmote
-		}
+            //happyEmote
+            this.transform.GetChild(0).gameObject.gameObject.GetComponent<SpriteRenderer>().sprite = happyT;
+        }
 		else
 		{
-			//sadEmote
-		}
+            //sadEmote
+            this.transform.GetChild(0).gameObject.gameObject.GetComponent<SpriteRenderer>().sprite = sadT;
+        }
 		agent.SetDestination (pos);
 	}
 		
