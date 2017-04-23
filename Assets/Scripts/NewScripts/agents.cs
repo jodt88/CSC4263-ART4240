@@ -129,6 +129,7 @@ public class agents : MonoBehaviour {
 	public void attemptRequest(){
 		activateTimer = false;
 		ResourceManager.resourceTable [0].swapAvailable (resourcePosition);
+		resetInteractionSprite (0, resourcePosition, emtStool);
 		switch (request) {
 		case "Bed":
 			resourcePosition = 1;
@@ -145,9 +146,9 @@ public class agents : MonoBehaviour {
 		if(pos<0)
 		{
 			//gets a fakeposition near the first resource 
-			position = ResourceManager.resourceTable[resourcePosition].getPosition(pos).position;
-			position.x += 2;
-			agent.SetDestination(position,noResource);
+			this.position = ResourceManager.resourceTable[resourcePosition].getPosition(pos).position;
+			this.position.x += 2;
+			this.agent.SetDestination(position,noResource);
 		}
 		else{
 			position = ResourceManager.resourceTable[resourcePosition].getPosition(0).position;
@@ -166,10 +167,8 @@ public class agents : MonoBehaviour {
 				setTimer(Timers.lineTimer);	
 				break;
 			case "Stool": 
-				setTimer(Timers.stoolTimer);
-                this.transform.GetChild(0).gameObject.gameObject.GetComponent<SpriteRenderer>().enabled = true;
-                this.GetComponent<SpriteRenderer>().enabled = false;
-                ResourceManager.resourceTable[0].getPosition(resourcePosition).GetComponent<SpriteRenderer>().sprite = occuStool;
+				setTimer (Timers.stoolTimer);
+				setInteractionSprite (0,resourcePosition,occuStool);
                     //ResourceManager.resourceTable[0].getPosition(resourcePosition).GetComponent<SpriteRenderer>().enabled = false;
                     //this.GetComponent<SpriteRenderer>().sprite = occuStool;
                 break;
@@ -221,14 +220,7 @@ public class agents : MonoBehaviour {
 		}
 		agent.SetDestination (pos);
 	}
-
-	/*public void destroyCallback(bool success){
-		if (success) {
-			//check
-			DestroyObject (this.gameObject);
-		}
-	}*/
-
+		
 	public void setTimer(float time){
 		timer = time;
 		activateTimer = true;
@@ -264,4 +256,17 @@ public class agents : MonoBehaviour {
 
 	}
 
+	public void setInteractionSprite(int resource,int pos,Sprite image){
+		this.transform.GetChild(resource).gameObject.gameObject.GetComponent<SpriteRenderer>().enabled = true;
+		this.GetComponent<SpriteRenderer>().enabled = false;
+		ResourceManager.resourceTable [resource].getPosition (pos).name = this.name;
+		ResourceManager.resourceTable[resource].getPosition(pos).GetComponent<SpriteRenderer>().sprite = image;
+	}
+
+	public void resetInteractionSprite(int resource, int pos, Sprite image){
+		this.transform.GetChild(resource).gameObject.gameObject.GetComponent<SpriteRenderer>().enabled = true;
+		this.GetComponent<SpriteRenderer>().enabled = true;
+		ResourceManager.resourceTable [resource].getPosition (pos).name = this.name;
+		ResourceManager.resourceTable[resource].getPosition(pos).GetComponent<SpriteRenderer>().sprite = image;
+	}
 }

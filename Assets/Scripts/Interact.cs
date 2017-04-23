@@ -6,7 +6,6 @@ public class Interact : MonoBehaviour {
 	GameObject gameObject;
 	// Use this for initialization
 	void Start () {
-
 	}
 	
 	// Update is called once per frame
@@ -17,10 +16,13 @@ public class Interact : MonoBehaviour {
 				switch (gameObject.tag) {
 				case "Bed":
 					break;
-				case "Patron":
+				/*case "Patron":
 					interactPatron ();
-					break;
+					break;*/
 				case "Food":
+					break;
+				case "Stool":
+					interactPatron ();
 					break;
 				}
 			}
@@ -39,16 +41,24 @@ public class Interact : MonoBehaviour {
 
 	void interactPatron(){
 		//checks that left button was clicked while behind bard
-		if (gameObject.GetComponent<agents>().getResourceInUse()=="Stool"&&barSensor.behindBar)
+		if (gameObject.name.Contains("patron")&&barSensor.behindBar)
         {
-            //will just auto interact with patron this will be replaced by ui. 
+			GameObject patron = findPatron ();
 
-            //check if request can be fulfilled before actually attending
+			if (patron != null) {
+				patron.GetComponent<agents> ().wasAttended ();
+			}
 
-
-
-            gameObject.GetComponent<agents> ().wasAttended ();
 	    }
+	}
+
+	GameObject findPatron () {
+		var objects = GameObject.FindGameObjectsWithTag("Patron");
+		foreach(GameObject patron in objects){
+			if (patron.name == gameObject.name)
+				return patron;
+		}
+		return null;
 	}
 }
 
