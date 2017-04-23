@@ -6,7 +6,7 @@ using System.Collections;
 public static class  Inn
 {
 
-    public static int playerScore_net=0;//current net profit for player
+    public static int playerScore_net=1000;//current net profit for player
 	public static int playerScore_now=0;//current day profit for player
     public static int opponentScore=0;//current profit for cpu
    

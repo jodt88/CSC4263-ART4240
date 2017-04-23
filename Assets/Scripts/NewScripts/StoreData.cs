@@ -7,9 +7,9 @@ using UnityEngine.SceneManagement;
 public class StoreData : MonoBehaviour
 {
     int money;
-    public static int bedUpgrades;
-    public static int tableUpgrades;
-    public static int musicUpgrades;
+    public static int bedUpgrades=0;
+    public static int tableUpgrades=0;
+    public static int musicUpgrades=0;
     int maxBedUpgrades = 6;
     int maxTableUpgrades = 6;
     int maxMusicUpgrades = 5;
@@ -110,5 +110,9 @@ public class StoreData : MonoBehaviour
 		yield return new WaitForSeconds(fadeTime);
 		SceneManager.LoadScene("main");
 	}
+
+
+
+
 }
  

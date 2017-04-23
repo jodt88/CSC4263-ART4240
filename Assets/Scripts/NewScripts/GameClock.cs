@@ -13,8 +13,8 @@ public class GameClock : MonoBehaviour
         // set hour and minute if scene is the main scene (currently approx. real-time = 5 minutes)
         if (SceneManager.GetActiveScene().name == "main")
         {
-            Inn.hour = 5;
-            Inn.minute = 00;
+            Inn.hour = 0;
+            Inn.minute = 10;
 			Inn.day++;					// also increment the day
 			Inn.playerScore_now = 0;	// also reset day's profit to 0
         }

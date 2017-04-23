@@ -146,12 +146,22 @@ public class agents : MonoBehaviour {
 		if(pos<0)
 		{
 			//gets a fakeposition near the first resource 
-			this.position = ResourceManager.resourceTable[resourcePosition].getPosition(pos).position;
-			this.position.x += 2;
+			if (resourcePosition == 2) {
+				this.position = ResourceManager.resourceTable [resourcePosition].getChairPosition (0).position;
+				this.position.x -= 2;
+			} else {
+				this.position = ResourceManager.resourceTable [resourcePosition].getPosition (0).position;
+				this.position.x += 2;
+			}
 			this.agent.SetDestination(position,noResource);
 		}
 		else{
-			position = ResourceManager.resourceTable[resourcePosition].getPosition(0).position;
+			if (resourcePosition == 2)
+				position = ResourceManager.resourceTable [resourcePosition].getChairPosition (pos).position;
+			else
+				position = ResourceManager.resourceTable[resourcePosition].getPosition(pos).position;
+
+			ResourceManager.resourceTable [resourcePosition].swapAvailable (pos);
 			setResourceInUse(request);
 			agent.SetDestination (position, onReached);
 		}
@@ -205,7 +215,8 @@ public class agents : MonoBehaviour {
         this.GetComponent<SpriteRenderer>().enabled = true;
         var pos = GameObject.Find ("PatronDespawner").transform.position;
 		isLeaving = true;
-        if (resourceInUse == "Stool")
+       
+		if (resourceInUse == "Stool")
         {
             ResourceManager.resourceTable[0].swapAvailable(resourcePosition);
             ResourceManager.resourceTable[0].getPosition(resourcePosition).GetComponent<SpriteRenderer>().sprite = emtStool;
@@ -268,5 +279,8 @@ public class agents : MonoBehaviour {
 		this.GetComponent<SpriteRenderer>().enabled = true;
 		ResourceManager.resourceTable [resource].getPosition (pos).name = this.name;
 		ResourceManager.resourceTable[resource].getPosition(pos).GetComponent<SpriteRenderer>().sprite = image;
+	}
+
+	public void findStool(){
 	}
 }

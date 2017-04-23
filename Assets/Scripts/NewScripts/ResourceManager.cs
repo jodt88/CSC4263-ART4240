@@ -9,24 +9,46 @@ public class ResourceManager : MonoBehaviour {
 	public static List<Resource> resourceTable = new List<Resource>(); 
 	public static int playerScore;
 	public static int opponentScore;
+
 	// Use this for initialization
 	void Start(){
-
+		enableBeds (StoreData.bedUpgrades);
+		enableTables (StoreData.tableUpgrades);
+		
 	}
 	void Awake () {
-		//popluates the hash table with each resource
-
+		
+		int count = 0;
+		int scalar = 1;
 		foreach (Transform child in transform) {
 			Resource resource = new Resource ();
 			resource.setChild (child);
-			resource.setIsAvailable (child.childCount);
+			if (count == 2)
+				scalar = 4;
+			resource.setIsAvailable (child.childCount*scalar);
 			resourceTable.Add (resource);
+			count++;
+			scalar = 1;
 		}
 	}
 
 	// Update is called once per frame
 	void Update () {
 
+	}
+
+	public void enableBeds(int upgrade){
+		int bedsEnabledPerUpgrade = 1;
+		GameObject table = GameObject.Find ("Beds");
+		for(int i = 0; i<bedsEnabledPerUpgrade;i++)
+			table.transform.GetChild (upgrade+i).gameObject.SetActive (true);
+	}
+
+	public void enableTables(int upgrade){
+		int tablesEnabledPerUpgrade = 2;
+		GameObject table = GameObject.Find ("Tables");
+		for(int i = 0; i<tablesEnabledPerUpgrade;i++)
+			table.transform.GetChild (upgrade+i).gameObject.SetActive (true);
 	}
 }
 
@@ -49,11 +71,18 @@ public class Resource{
 	}
 
 	public void swapAvailable(int pos){
+		Debug.Log (pos);
 		available [pos] = !available [pos];
 	}
 
 	public Transform getPosition(int pos){
 		return child.GetChild (pos);
+	}
+
+	public Transform getChairPosition(int pos){
+		Transform table = child.GetChild (pos / 4 );
+
+		return table.GetChild (pos % 4);
 	}
 	public string getTag(int pos){
 		return child.GetChild (pos).tag;
@@ -98,6 +127,8 @@ public class Resource{
 		return pos;
 	}
 
+
+
 	public string debugResourceAvailability()
 	{
 		string availableArray=""; 
@@ -109,6 +140,7 @@ public class Resource{
 		}
 		return availableArray;
 	}
+
 }
 
 
