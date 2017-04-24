@@ -68,5 +68,7 @@ public class GameClock : MonoBehaviour
         }
         else if (SceneManager.GetActiveScene().name == "End of Day Recap")
             SceneManager.LoadScene("Store");
+		else if (SceneManager.GetActiveScene().name == "End of Day Recap" && Inn.day == 7)
+			SceneManager.LoadScene("Letter");
     }
 }
