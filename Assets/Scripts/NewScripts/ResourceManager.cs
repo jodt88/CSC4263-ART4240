@@ -76,6 +76,7 @@ public class ResourceManager : MonoBehaviour {
 public class Resource{
 	private Transform child;
 	private List<bool> available;
+    private List<float> cleanTime;
 
 	public Resource(){
 		available = new List<bool>();								

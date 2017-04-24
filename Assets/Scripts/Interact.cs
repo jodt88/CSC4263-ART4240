@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Interact : MonoBehaviour {
-	GameObject gameObject;
+	GameObject tavernObj;
+    GameObject sensorObj;
 	// Use this for initialization
 	void Start () {
 	}
@@ -11,19 +12,20 @@ public class Interact : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetMouseButtonDown (0)) {
-			gameObject = getInteractionObject ();
-			if (gameObject != null) {
-				switch (gameObject.tag) {
+            tavernObj = getInteractionObject ();
+			if (tavernObj != null) {
+				switch (tavernObj.tag) {
 				case "Bed":
-					break;
-				/*case "Patron":
-					interactPatron ();
-					break;*/
+                    interactBed();
+                    break;
 				case "Food":
 					break;
 				case "Stool":
 					interactPatron ();
 					break;
+                case "Chair":
+                    interactTable();
+                    break;
 				}
 			}
 		}
@@ -41,7 +43,7 @@ public class Interact : MonoBehaviour {
 
 	void interactPatron(){
 		//checks that left button was clicked while behind bard
-		if (gameObject.name.Contains("patron")&&barSensor.behindBar)
+		if (tavernObj.name.Contains("patron")&&barSensor.behindBar)
         {
 			GameObject patron = findPatron ();
 
@@ -52,14 +54,32 @@ public class Interact : MonoBehaviour {
 	    }
 	}
 
-	GameObject findPatron () {
+
+    void interactTable()
+    {
+        if(tavernObj.transform.parent.gameObject.name == sensorObj.name)
+        {
+            ResourceManager.resourceTable[2].swapAvailable(tavernObj.transform.GetSiblingIndex()+sensorObj.transform.GetSiblingIndex()*4);
+            tavernObj.transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = false;
+        }
+    }
+
+    void interactBed() { }
+
+
+    GameObject findPatron () {
 		var objects = GameObject.FindGameObjectsWithTag("Patron");
 		foreach(GameObject patron in objects){
-			if (patron.name == gameObject.name)
+			if (patron.name == tavernObj.name)
 				return patron;
 		}
 		return null;
 	}
+
+    public void setSensorObject(GameObject sensor)
+    {
+        sensorObj = sensor;
+    }
 }
 
 

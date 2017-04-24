@@ -147,7 +147,7 @@ MonoBehaviour:
   stoppingDistance: 0.1
   slowingDistance: 1
   accelerationRate: 4
-  decelerationRate: 10
+  decelerationRate: 6
   rotateTransform: 0
   rotateSpeed: 350
   avoidRadius: 0
