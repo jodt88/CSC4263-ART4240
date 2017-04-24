@@ -59,7 +59,9 @@ public class agents : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+		
 
+		setAnimation (agent.movingDirection);
 		//if timer is started
 		if (activateTimer) {
 			if (timer > 0f) {
@@ -300,6 +302,22 @@ public class agents : MonoBehaviour {
 		ResourceManager.resourceTable[resource].getPosition(pos).GetComponent<SpriteRenderer>().sprite = image;
 	}
 
-	public void findStool(){
+	public void setAnimation(Vector2 movingDirection){
+		float direction = Mathf.Abs (movingDirection.x) - Mathf.Abs (movingDirection.y);
+		if (direction >= 0f && movingDirection.x > 0f) {
+			//set animmation to walking right
+					Debug.Log("Set right animation");
+		} else if (direction < 0f && movingDirection.y > 0f) {
+				//set animation to walking up
+					Debug.Log("Set up animation");
+		} else if (direction >= 0f && movingDirection.x < 0f) {
+					//set animation to walking left
+					Debug.Log("Set left animation");
+		}else if (direction < 0f && movingDirection.y <0f){
+					//set animation to walking down
+					Debug.Log("Set down animation");
+		}
 	}
+
+				
 }
