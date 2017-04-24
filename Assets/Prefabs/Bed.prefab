@@ -20,8 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4839169618575888}
   - component: {fileID: 61769229498352672}
-  - component: {fileID: 114583788025409424}
-  - component: {fileID: 114019822358058920}
+  - component: {fileID: 114940057471878252}
   m_Layer: 0
   m_Name: Sensor2
   m_TagString: Untagged
@@ -38,6 +37,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4733176701875280}
   - component: {fileID: 212369319669719818}
+  - component: {fileID: 114777541544836602}
+  - component: {fileID: 61027104426807532}
   m_Layer: 0
   m_Name: Bed
   m_TagString: Bed
@@ -80,8 +81,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1811622715246656}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -31.64, y: -3.3, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -31.58, y: 0.25, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4839169618575888}
@@ -102,6 +103,20 @@ Transform:
   m_Father: {fileID: 4733176701875280}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &61027104426807532
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1811622715246656}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 2.22, y: 2.77}
 --- !u!61 &61769229498352672
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -116,7 +131,21 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
---- !u!114 &114019822358058920
+--- !u!114 &114777541544836602
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1811622715246656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9e4ba9b495710148bbab30aa1ce1048, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  invertPolygon: 1
+  shapeType: 1
+  extraOffset: 0
+--- !u!114 &114940057471878252
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -124,33 +153,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1024805239358294}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3b9821e6f85ad142a4ef93dc84fa8f0, type: 3}
+  m_Script: {fileID: 11500000, guid: 87f0e0860d13ee44dbe8a50efc7f2170, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bed: {fileID: 1811622715246656}
-  patron: {fileID: 0}
-  patronThought: {fileID: 0}
-  sleepTimer: 3
-  sleepyTime: 0
-  messyBedSprite: {fileID: 21300000, guid: 144c90789410fa7479a634992e669b24, type: 3}
-  sleepingPatronSprite: {fileID: 21300000, guid: ac4b233b581ac57469b432b9afef8c86,
-    type: 3}
-  origPatronSprite: {fileID: 0}
-  happyThought: {fileID: 21300000, guid: 06c2e09f503e52c40a5f02cd0d5d6fc5, type: 3}
---- !u!114 &114583788025409424
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1024805239358294}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 902783c77bafa934eb716edb9366960b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bed: {fileID: 1811622715246656}
-  cleanTimer: 3
-  cleanBedSprite: {fileID: 21300000, guid: 78210ef959abd2f4bbd38e3fbfe17eef, type: 3}
 --- !u!212 &212369319669719818
 SpriteRenderer:
   m_ObjectHideFlags: 1
