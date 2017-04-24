@@ -6,7 +6,9 @@ using UnityEngine.SceneManagement;
 
 
 public class mainMenu : MonoBehaviour {
-	public GUIStyle TitleStyle;	// settings for the GUI
+
+	// settings for the GUI
+	public GUIStyle TitleStyle;
 	public GUIStyle SubStyle;
 
 	// Variables for the cheat code

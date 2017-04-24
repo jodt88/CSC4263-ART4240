@@ -26,10 +26,10 @@ public class StoreData : MonoBehaviour
 	void OnGUI()
 	{
 		// display a recap of the day's information
-		GUI.Label (new Rect (Screen.width/2-50, Screen.height/2-25, 100, 50), "STORE\n\n\n" +
-			"1.) Beds: \t\t Upgrades Left: " + (maxBedUpgrades-bedUpgrades) + "\tCost: " + bedPrice + "\n\n" +
-			"2.) Tables: \t\t Upgrades Left: " + (maxTableUpgrades-tableUpgrades) + "\tCost: " + tablePrice + "\n\n" +
-			"3.) Minstrels: \t Upgrades Left: " + (maxMusicUpgrades-musicUpgrades) + "\tCost: " + musicPrice + "\n\n\n" +
+		GUI.Label (new Rect (Screen.width/2-50, Screen.height/2, 100, 50),
+			"1.) Beds \t\t Upgrades Left: " + (maxBedUpgrades-bedUpgrades) + "\tCost: " + bedPrice + "\n\n" +
+			"2.) Tables \t\t Upgrades Left: " + (maxTableUpgrades-tableUpgrades) + "\tCost: " + tablePrice + "\n\n" +
+			"3.) Minstrels \t Upgrades Left: " + (maxMusicUpgrades-musicUpgrades) + "\tCost: " + musicPrice + "\n\n\n" +
 			"Total Money: " + money + "\n\n\n" +
 			"Press 1, 2, or 3 on the keyboard to buy their matching upgrades.\n\n" +
 			"Press 4 on the keyboard to continue to the next day.", HUDStyle);
