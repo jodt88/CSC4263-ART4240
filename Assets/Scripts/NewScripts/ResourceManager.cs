@@ -24,7 +24,12 @@ public class ResourceManager : MonoBehaviour {
 			Resource resource = new Resource ();
 			resource.setChild (child);
 
-			if (Inn.day >= 2)
+            if (Inn.day == 1||mainMenu.cheatActivated)
+                resourceTable.Add(resource);
+            else
+                resourceTable[count] = resource;
+
+            if (Inn.day >= 2)
 				checkUpgrades ();
 
 			if (count != 2)
@@ -32,10 +37,7 @@ public class ResourceManager : MonoBehaviour {
 			else
 				resource.setIsAvailableTable (child.childCount);
 
-			if (Inn.day == 1) 
-				resourceTable.Add (resource);
-			else 
-				resourceTable [count] = resource;
+			
 
 
 

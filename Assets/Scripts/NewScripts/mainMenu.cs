@@ -11,6 +11,8 @@ public class mainMenu : MonoBehaviour {
 	public GUIStyle TitleStyle;
 	public GUIStyle SubStyle;
 
+    public static bool cheatActivated = false;
+
 	// Variables for the cheat code
 	private int sequenceIndex;
 	private KeyCode[] sequence = new KeyCode[] {
@@ -49,6 +51,7 @@ public class mainMenu : MonoBehaviour {
 			if (++sequenceIndex == sequence.Length) 
 			{
 				sequenceIndex = 0;
+                cheatActivated = true;
 				Inn.day = 6;						// Set day to 6, so when game starts its 7th day (last day)
 				Inn.playerScore_net = 2000000000;	// Set the inn's total profit to 2 billion (to guaruntee a win)
 				StartCoroutine (performFade3 ());

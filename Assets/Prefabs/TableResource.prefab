@@ -75,22 +75,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1314026670636618
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4903490354001654}
-  - component: {fileID: 61098270848591724}
-  m_Layer: 0
-  m_Name: TableSensor
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &1327727156568066
 GameObject:
   m_ObjectHideFlags: 0
@@ -138,6 +122,8 @@ GameObject:
   - component: {fileID: 212583880611095600}
   - component: {fileID: 114114645907652560}
   - component: {fileID: 60253671800873264}
+  - component: {fileID: 61144981690896362}
+  - component: {fileID: 114285098533421754}
   m_Layer: 0
   m_Name: TableResource
   m_TagString: Untagged
@@ -263,7 +249,6 @@ Transform:
   - {fileID: 4221557705690828}
   - {fileID: 4828769591868178}
   - {fileID: 4444162652760576}
-  - {fileID: 4903490354001654}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
@@ -307,19 +292,6 @@ Transform:
   m_Father: {fileID: 4544055466894712}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4903490354001654
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1314026670636618}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4544055466894712}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!60 &60253671800873264
 PolygonCollider2D:
   m_ObjectHideFlags: 1
@@ -354,20 +326,20 @@ BoxCollider2D:
   m_Offset: {x: -0.51815426, y: 0.055143423}
   serializedVersion: 2
   m_Size: {x: 2.0595999, y: 1.3579832}
---- !u!61 &61098270848591724
+--- !u!61 &61144981690896362
 BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1314026670636618}
+  m_GameObject: {fileID: 1465694867920702}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_Offset: {x: 0.031140197, y: -0.1245556}
+  m_Offset: {x: 0.00000094994914, y: -0.04668427}
   serializedVersion: 2
-  m_Size: {x: 3.8650627, y: 7.5398083}
+  m_Size: {x: 4.8456807, y: 6.2036786}
 --- !u!61 &61298253810961888
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -452,6 +424,18 @@ MonoBehaviour:
   invertPolygon: 1
   shapeType: 1
   extraOffset: 0
+--- !u!114 &114285098533421754
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1465694867920702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb13ffe545bd77845b41120525ae5f1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  byTable: 0
 --- !u!114 &114449887688702430
 MonoBehaviour:
   m_ObjectHideFlags: 1
