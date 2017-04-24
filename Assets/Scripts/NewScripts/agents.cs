@@ -233,6 +233,7 @@ public class agents : MonoBehaviour {
         if (resourceInUse == "Food")
         {
             ResourceManager.resourceTable[resourcePosition].getChairPosition(0).GetComponent<SpriteRenderer>().sprite = emtStool;
+            ResourceManager.resourceTable[resourcePosition].getChairPosition(0).GetChild(0).GetComponent<SpriteRenderer>().enabled = true;
         }
 
         if (satisfied){
