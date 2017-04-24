@@ -61,6 +61,10 @@ public class mainMenu : MonoBehaviour {
 		// fade out the scene
 		float fadeTime = GameObject.Find("ScreenFader").GetComponent<SceneFade>().BeginFade(1);    
 		yield return new WaitForSeconds(fadeTime);
-		SceneManager.LoadScene("main");
+		if (Inn.day == 0)
+			SceneManager.LoadScene("Letter");
+		else if (Inn.day == 6)
+			SceneManager.LoadScene("main");
+
 	}
 }
