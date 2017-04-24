@@ -142,7 +142,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: b178faaa8bb1c1c4cb16f03ebeea65aa, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -396,6 +396,11 @@ Transform:
   m_PrefabParentObject: {fileID: 4219725402546558, guid: 7db8c3ae0ff644bd481c5dc12853322b,
     type: 2}
   m_PrefabInternal: {fileID: 1787452367}
+--- !u!4 &275643364 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4733176701875280, guid: 301601007d7424ca39c16a3bac506cad,
+    type: 2}
+  m_PrefabInternal: {fileID: 1190774238}
 --- !u!1001 &319206623
 Prefab:
   m_ObjectHideFlags: 0
@@ -405,11 +410,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4733176701875280, guid: 301601007d7424ca39c16a3bac506cad, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -23.911634
+      value: -31.64
       objectReference: {fileID: 0}
     - target: {fileID: 4733176701875280, guid: 301601007d7424ca39c16a3bac506cad, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -1.1808445
+      value: -3.3
       objectReference: {fileID: 0}
     - target: {fileID: 4733176701875280, guid: 301601007d7424ca39c16a3bac506cad, type: 2}
       propertyPath: m_LocalPosition.z
@@ -438,10 +443,6 @@ Prefab:
     - target: {fileID: 1811622715246656, guid: 301601007d7424ca39c16a3bac506cad, type: 2}
       propertyPath: m_Name
       value: Bed (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 1811622715246656, guid: 301601007d7424ca39c16a3bac506cad, type: 2}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 301601007d7424ca39c16a3bac506cad, type: 2}
@@ -509,11 +510,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4733176701875280, guid: 301601007d7424ca39c16a3bac506cad, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -30.83
+      value: -31.58
       objectReference: {fileID: 0}
     - target: {fileID: 4733176701875280, guid: 301601007d7424ca39c16a3bac506cad, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -0.15
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 4733176701875280, guid: 301601007d7424ca39c16a3bac506cad, type: 2}
       propertyPath: m_LocalPosition.z
@@ -674,14 +675,14 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   navObstacles:
-  - {fileID: 1072546544}
-  - {fileID: 702063163}
-  - {fileID: 143914094}
-  - {fileID: 1482404199}
-  - {fileID: 1971277707}
   - {fileID: 1301470315}
-  - {fileID: 1025761293}
+  - {fileID: 702063163}
+  - {fileID: 1072546544}
+  - {fileID: 1482404199}
   - {fileID: 850389817}
+  - {fileID: 1971277707}
+  - {fileID: 1025761293}
+  - {fileID: 143914094}
   - {fileID: 659519826}
   inflateRadius: 0.1
   regenerateFlag: 1
@@ -773,6 +774,56 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 1910514744}
   m_Script: {fileID: 11500000, guid: c9e4ba9b495710148bbab30aa1ce1048, type: 3}
+--- !u!1001 &689967506
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1147061964}
+    m_Modifications:
+    - target: {fileID: 4733176701875280, guid: 301601007d7424ca39c16a3bac506cad, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -27.72
+      objectReference: {fileID: 0}
+    - target: {fileID: 4733176701875280, guid: 301601007d7424ca39c16a3bac506cad, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -3.41
+      objectReference: {fileID: 0}
+    - target: {fileID: 4733176701875280, guid: 301601007d7424ca39c16a3bac506cad, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4733176701875280, guid: 301601007d7424ca39c16a3bac506cad, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4733176701875280, guid: 301601007d7424ca39c16a3bac506cad, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4733176701875280, guid: 301601007d7424ca39c16a3bac506cad, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4733176701875280, guid: 301601007d7424ca39c16a3bac506cad, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4733176701875280, guid: 301601007d7424ca39c16a3bac506cad, type: 2}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1811622715246656, guid: 301601007d7424ca39c16a3bac506cad, type: 2}
+      propertyPath: m_Name
+      value: Bed(2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1811622715246656, guid: 301601007d7424ca39c16a3bac506cad, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 301601007d7424ca39c16a3bac506cad, type: 2}
+  m_IsPrefabParent: 0
 --- !u!4 &702063160 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4219725402546558, guid: 7db8c3ae0ff644bd481c5dc12853322b,
@@ -923,6 +974,56 @@ Transform:
   m_PrefabParentObject: {fileID: 4544055466894712, guid: 4b09ecbbed30de844b07ae309c49caa8,
     type: 2}
   m_PrefabInternal: {fileID: 1910514744}
+--- !u!1001 &862374216
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1147061964}
+    m_Modifications:
+    - target: {fileID: 4733176701875280, guid: 301601007d7424ca39c16a3bac506cad, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -27.68
+      objectReference: {fileID: 0}
+    - target: {fileID: 4733176701875280, guid: 301601007d7424ca39c16a3bac506cad, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0.16
+      objectReference: {fileID: 0}
+    - target: {fileID: 4733176701875280, guid: 301601007d7424ca39c16a3bac506cad, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4733176701875280, guid: 301601007d7424ca39c16a3bac506cad, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4733176701875280, guid: 301601007d7424ca39c16a3bac506cad, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4733176701875280, guid: 301601007d7424ca39c16a3bac506cad, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4733176701875280, guid: 301601007d7424ca39c16a3bac506cad, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4733176701875280, guid: 301601007d7424ca39c16a3bac506cad, type: 2}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1811622715246656, guid: 301601007d7424ca39c16a3bac506cad, type: 2}
+      propertyPath: m_Name
+      value: Bed (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1811622715246656, guid: 301601007d7424ca39c16a3bac506cad, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 301601007d7424ca39c16a3bac506cad, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &932627782
 GameObject:
   m_ObjectHideFlags: 0
@@ -2109,6 +2210,11 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!4 &1010922389 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4733176701875280, guid: 301601007d7424ca39c16a3bac506cad,
+    type: 2}
+  m_PrefabInternal: {fileID: 862374216}
 --- !u!1 &1021261151
 GameObject:
   m_ObjectHideFlags: 0
@@ -2155,7 +2261,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: f4fa9a164ab4fc744a68f0645cae0d09, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -2517,6 +2623,9 @@ Transform:
   m_Children:
   - {fileID: 439843793}
   - {fileID: 473856175}
+  - {fileID: 1273379694}
+  - {fileID: 1010922389}
+  - {fileID: 275643364}
   m_Father: {fileID: 1383181501}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2639,6 +2748,61 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15f2df00fbdbc0a44a15bcf2d86421a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1001 &1190774238
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1147061964}
+    m_Modifications:
+    - target: {fileID: 4733176701875280, guid: 301601007d7424ca39c16a3bac506cad, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -21.55
+      objectReference: {fileID: 0}
+    - target: {fileID: 4733176701875280, guid: 301601007d7424ca39c16a3bac506cad, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -3.39
+      objectReference: {fileID: 0}
+    - target: {fileID: 4733176701875280, guid: 301601007d7424ca39c16a3bac506cad, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4733176701875280, guid: 301601007d7424ca39c16a3bac506cad, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4733176701875280, guid: 301601007d7424ca39c16a3bac506cad, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4733176701875280, guid: 301601007d7424ca39c16a3bac506cad, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4733176701875280, guid: 301601007d7424ca39c16a3bac506cad, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4733176701875280, guid: 301601007d7424ca39c16a3bac506cad, type: 2}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1811622715246656, guid: 301601007d7424ca39c16a3bac506cad, type: 2}
+      propertyPath: m_Name
+      value: Bed (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1811622715246656, guid: 301601007d7424ca39c16a3bac506cad, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 301601007d7424ca39c16a3bac506cad, type: 2}
+  m_IsPrefabParent: 0
+--- !u!4 &1273379694 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4733176701875280, guid: 301601007d7424ca39c16a3bac506cad,
+    type: 2}
+  m_PrefabInternal: {fileID: 689967506}
 --- !u!114 &1301470315 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114003073592858906, guid: 4b09ecbbed30de844b07ae309c49caa8,
@@ -2834,7 +2998,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 5
   m_Sprite: {fileID: 21300000, guid: 0efe078fc97638e4c860725be1fc3da2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -3619,17 +3783,22 @@ Prefab:
     - target: {fileID: 212198825389146260, guid: 4b09ecbbed30de844b07ae309c49caa8,
         type: 2}
       propertyPath: m_SortingOrder
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 212874683387674014, guid: 4b09ecbbed30de844b07ae309c49caa8,
         type: 2}
       propertyPath: m_SortingOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 212441728058311336, guid: 4b09ecbbed30de844b07ae309c49caa8,
         type: 2}
       propertyPath: m_SortingOrder
-      value: 4
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 212583880611095600, guid: 4b09ecbbed30de844b07ae309c49caa8,
+        type: 2}
+      propertyPath: m_SortingOrder
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4b09ecbbed30de844b07ae309c49caa8, type: 2}
@@ -3827,7 +3996,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: a695763f03c67394aafc186bab5da326, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

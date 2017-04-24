@@ -246,13 +246,11 @@ public class agents : MonoBehaviour {
         if (resourceInUse == "Food")
         {
             ResourceManager.resourceTable[resourcePosition].getChairPosition(itemIndex).GetComponent<SpriteRenderer>().sprite = emtStool;
-            //ResourceManager.resourceTable[resourcePosition].getChairPosition(0).GetChild(0).GetComponent<SpriteRenderer>().enabled = true;
 			ResourceManager.resourceTable[resourcePosition].getChairPosition(itemIndex).GetChild(0).GetComponent<SpriteRenderer>().enabled = true;
         }
 
         if (resourceInUse == "Bed")
         {
-            this.GetComponent<SpriteRenderer>().enabled = false;
             ResourceManager.resourceTable[resourcePosition].getPosition(itemIndex).GetChild(1).GetComponent<SpriteRenderer>().enabled = false;
             ResourceManager.resourceTable[resourcePosition].getPosition(itemIndex).GetComponent<SpriteRenderer>().sprite = messBed;
         }
@@ -322,16 +320,16 @@ public class agents : MonoBehaviour {
 		float direction = Mathf.Abs (movingDirection.x) - Mathf.Abs (movingDirection.y);
 		if (direction >= 0f && movingDirection.x > 0f) {
 			//set animmation to walking right
-					Debug.Log("Set right animation");
+					//Debug.Log("Set right animation");
 		} else if (direction < 0f && movingDirection.y > 0f) {
 				//set animation to walking up
-					Debug.Log("Set up animation");
+					//Debug.Log("Set up animation");
 		} else if (direction >= 0f && movingDirection.x < 0f) {
 					//set animation to walking left
-					Debug.Log("Set left animation");
+					//Debug.Log("Set left animation");
 		}else if (direction < 0f && movingDirection.y <0f){
 					//set animation to walking down
-					Debug.Log("Set down animation");
+					//Debug.Log("Set down animation");
 		}
 	}
 
