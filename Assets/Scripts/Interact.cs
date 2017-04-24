@@ -5,6 +5,7 @@ using UnityEngine;
 public class Interact : MonoBehaviour {
 	GameObject tavernObj;
     GameObject sensorObj;
+    public Sprite cleanBed;
 	// Use this for initialization
 	void Start () {
 	}
@@ -64,7 +65,14 @@ public class Interact : MonoBehaviour {
         }
     }
 
-    void interactBed() { }
+    void interactBed()
+    {
+        if (tavernObj.name == sensorObj.transform.parent.gameObject.name)
+        {
+            ResourceManager.resourceTable[1].swapAvailable(tavernObj.transform.GetSiblingIndex());
+            tavernObj.GetComponent<SpriteRenderer>().sprite = cleanBed;
+        }
+    }
 
 
     GameObject findPatron () {

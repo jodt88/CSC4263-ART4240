@@ -1,0 +1,24 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class BedSensor : MonoBehaviour
+{
+
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.name == "Barkeeper")
+        {
+            other.gameObject.GetComponent<Interact>().setSensorObject(this.gameObject);
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.name == "Barkeeper")
+        {
+            other.gameObject.GetComponent<Interact>().setSensorObject(null);
+        }
+    }
+}
