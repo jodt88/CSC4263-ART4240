@@ -15,12 +15,13 @@ public class GameClock : MonoBehaviour
         {
             Inn.hour = 0;
             Inn.minute = 60;
-			Inn.day++;					// also increment the day
+							// also increment the day
 			Inn.playerScore_now = 0;	// also reset day's profit to 0
         }
         // set hour and minute if scene is the end of day recap scene (currently approx. real-time = 5 seconds)
         else if (SceneManager.GetActiveScene().name == "End of Day Recap")
         {
+			Inn.day++;	
             Inn.hour = 0;
             Inn.minute = 10;
         }

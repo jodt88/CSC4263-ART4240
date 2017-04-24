@@ -11,6 +11,7 @@ public class agents : MonoBehaviour {
 	private string resourceInUse; //resource currently in use by agent
 	private Vector2 position;// Used to denote the actual v3 position the patron will go to.
 	private int resourcePosition;//Used to denote which specific resource out of the group the patron will access 
+	private int itemIndex; //the index of the resource the patron will occupy
 	private float timer;//used to determine remaining time till patron will finish using a resource. 
 	private bool activateTimer; //used to trigger the timer for the player
 	private string request; //resource patron wants to use
@@ -151,8 +152,8 @@ public class agents : MonoBehaviour {
 			break;
 		}
 
-		int pos = ResourceManager.resourceTable [resourcePosition].availablePosition ();
-		if(pos<0)
+		itemIndex = ResourceManager.resourceTable [resourcePosition].availablePosition ();
+		if(itemIndex<0)
 		{
 			//gets a fakeposition near the first resource 
 			if (resourcePosition == 2) {
@@ -166,11 +167,11 @@ public class agents : MonoBehaviour {
 		}
 		else{
 			if (resourcePosition == 2)
-				position = ResourceManager.resourceTable [resourcePosition].getChairPosition (pos).position;
+				position = ResourceManager.resourceTable [resourcePosition].getChairPosition (itemIndex).position;
 			else
-				position = ResourceManager.resourceTable[resourcePosition].getPosition(pos).position;
+				position = ResourceManager.resourceTable[resourcePosition].getPosition(itemIndex).position;
 
-			ResourceManager.resourceTable [resourcePosition].swapAvailable (pos);
+			ResourceManager.resourceTable [resourcePosition].swapAvailable (itemIndex);
 			setResourceInUse(request);
 			agent.SetDestination (position, onReached);
 		}
@@ -191,7 +192,7 @@ public class agents : MonoBehaviour {
 			case "Food":
 				setTimer (Timers.foodTimer);
                 this.GetComponent<SpriteRenderer>().enabled = false;
-                ResourceManager.resourceTable[resourcePosition].getChairPosition(0).GetComponent<SpriteRenderer>().sprite = occuStool;
+                ResourceManager.resourceTable[resourcePosition].getChairPosition(itemIndex).GetComponent<SpriteRenderer>().sprite = occuStool;
                 arrived = true;
                 wasSatisfied ();
 				break;
@@ -212,7 +213,8 @@ public class agents : MonoBehaviour {
 
 	//activates the timer and sets time patron will wait before leaving unsatisfied
 	public void noResource(bool success){
-		if(success){
+		if(success&&!arrived){
+			arrived = true;
 			activateTimer = true;
 			setTimer(Timers.noResourceTimer);
 		}
@@ -232,8 +234,9 @@ public class agents : MonoBehaviour {
 
         if (resourceInUse == "Food")
         {
-            ResourceManager.resourceTable[resourcePosition].getChairPosition(0).GetComponent<SpriteRenderer>().sprite = emtStool;
-            ResourceManager.resourceTable[resourcePosition].getChairPosition(0).GetChild(0).GetComponent<SpriteRenderer>().enabled = true;
+            ResourceManager.resourceTable[resourcePosition].getChairPosition(itemIndex).GetComponent<SpriteRenderer>().sprite = emtStool;
+            //ResourceManager.resourceTable[resourcePosition].getChairPosition(0).GetChild(0).GetComponent<SpriteRenderer>().enabled = true;
+			ResourceManager.resourceTable[resourcePosition].getChairPosition(itemIndex).GetChild(0).GetComponent<SpriteRenderer>().enabled = true;
         }
 
         if (satisfied){

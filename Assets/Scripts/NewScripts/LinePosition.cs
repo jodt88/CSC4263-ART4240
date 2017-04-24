@@ -13,7 +13,7 @@ public class LinePosition : MonoBehaviour {
 		patron = null;
 		triggered = false;
 		position = transform.GetSiblingIndex();
-		poll=0.05f;
+		poll=0.01f;
 	}
 
 	// Update is called once per frame
@@ -32,13 +32,19 @@ public class LinePosition : MonoBehaviour {
 	}
 	//if they enter
 	void OnTriggerEnter2D(Collider2D other){
-		if (other.CompareTag ("Patron")) {
-			patron = other.gameObject;
+		GameObject person = other.gameObject;
+		//modified to ensure that if a patron is go to bed or leaving bed they will not trigger being in line
+		if (person.tag == "Patron") {
+			if (!person.GetComponent<agents> ().getAttended()) {
+				patron = person;
+			}
 		}
+			
+		
 	}
 	void OnTriggerExit2D(Collider2D other){
-		if (other.CompareTag ("Patron")) {
-			if (other.name == patron.name) {
+		if (other.tag =="Patron") {
+			if (patron!=null && other.name== patron.name) {
 				patron = null;
 				triggered = false;
 			}

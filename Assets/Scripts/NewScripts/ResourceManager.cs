@@ -19,16 +19,27 @@ public class ResourceManager : MonoBehaviour {
 	void Awake () {
 		
 		int count = 0;
-		int scalar = 1;
+
 		foreach (Transform child in transform) {
 			Resource resource = new Resource ();
 			resource.setChild (child);
-			if (count == 2)
-				scalar = 4;
-			resource.setIsAvailable (child.childCount*scalar);
-			resourceTable.Add (resource);
+
+			if (Inn.day >= 2)
+				checkUpgrades ();
+
+			if (count != 2)
+				resource.setIsAvailable (child.childCount);
+			else
+				resource.setIsAvailableTable (child.childCount);
+
+			if (Inn.day == 1) 
+				resourceTable.Add (resource);
+			else 
+				resourceTable [count] = resource;
+
+
+
 			count++;
-			scalar = 1;
 		}
 	}
 
@@ -37,18 +48,28 @@ public class ResourceManager : MonoBehaviour {
 
 	}
 
+	public void checkUpgrades(){
+		for (int i = 0; i < 2; i++) {
+			if (i == 0)
+				enableBeds (StoreData.bedUpgrades);
+			else if (i == 1)
+				enableTables (StoreData.tableUpgrades);
+		}
+
+	}
+
 	public void enableBeds(int upgrade){
-		int bedsEnabledPerUpgrade = 1;
+		int bedsEnabledPerUpgrade = 1*upgrade;
 		GameObject table = GameObject.Find ("Beds");
-		for(int i = 0; i<bedsEnabledPerUpgrade;i++)
-			table.transform.GetChild (upgrade+i).gameObject.SetActive (true);
+		for(int i = 0; i<=bedsEnabledPerUpgrade;i++)
+			table.transform.GetChild (i).gameObject.SetActive (true);	
 	}
 
 	public void enableTables(int upgrade){
-		int tablesEnabledPerUpgrade = 2;
+		int tablesEnabledPerUpgrade = 2*upgrade;
 		GameObject table = GameObject.Find ("Tables");
-		for(int i = 0; i<tablesEnabledPerUpgrade;i++)
-			table.transform.GetChild (upgrade+i).gameObject.SetActive (true);
+		for(int i = 0; i<=tablesEnabledPerUpgrade;i++)
+			table.transform.GetChild (upgrade).gameObject.SetActive (true);
 	}
 }
 
@@ -66,19 +87,34 @@ public class Resource{
 
 	public void setIsAvailable(int length){
 		for (int i = 0; i < length; i++) {
+			if (child.GetChild(i).gameObject.activeSelf)
+				available.Add (true);
+		}
+	}
+
+	public void setIsAvailableTable(int length){
+		int chairs =4;
+		for (int i = 0; i < length; i++) {
+			if (child.GetChild(i).gameObject.activeSelf)
+				for(int j = 0;j<chairs;j++)
+					available.Add (true);
+		}
+	}
+
+	public void setIsAvailableUpdate(int length){
+		for (int i = 0; i < length; i++) {
 			available.Add (true);
 		}
 	}
 
 	public void swapAvailable(int pos){
-		Debug.Log (pos);
 		available [pos] = !available [pos];
 	}
 
 	public Transform getPosition(int pos){
 		return child.GetChild (pos);
 	}
-
+	//returns the position of the chair using the index set finding the next available seat.
 	public Transform getChairPosition(int pos){
 		Transform table = child.GetChild (pos / 4 );
 
@@ -127,7 +163,11 @@ public class Resource{
 		return pos;
 	}
 
-
+	public void resetAvailability(){
+		for (int i = 0; i < available.Count; i++) {
+			available [i] = true;
+		}
+	}
 
 	public string debugResourceAvailability()
 	{
