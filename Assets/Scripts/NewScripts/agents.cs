@@ -27,6 +27,8 @@ public class agents : MonoBehaviour {
     public Sprite drinkT;
     public Sprite bedT;
     public Sprite questT;
+    public Sprite sleepF;
+    public Sprite messBed;
 
 
     public PolyNavAgent agent{
@@ -180,7 +182,7 @@ public class agents : MonoBehaviour {
 	}
 
 	public void onReached(bool success){
-		if (success){    
+		if (success){
             switch (resourceInUse)
 			{
 			case "Line":
@@ -205,8 +207,15 @@ public class agents : MonoBehaviour {
 				break;
 			case "Bed":
 				setTimer (Timers.bedTimer);
-				arrived = true;
-				wasSatisfied ();
+                //this.GetComponent<SpriteRenderer>().enabled = false;
+                //ResourceManager.resourceTable[resourcePosition].getPosition(resourcePosition).GetChild(0).GetComponent<SpriteRenderer>().sprite = sleepF;
+                //ResourceManager.resourceTable[resourcePosition].getPosition(resourcePosition).GetChild(0).GetComponent<SpriteRenderer>().enabled = true;
+                arrived = true;
+                this.GetComponent<SpriteRenderer>().enabled = false;
+
+                ResourceManager.resourceTable[resourcePosition].getPosition(itemIndex).GetChild(1).GetComponent<SpriteRenderer>().sprite = sleepF;
+                ResourceManager.resourceTable[resourcePosition].getPosition(itemIndex).GetChild(1).GetComponent<SpriteRenderer>().enabled = true;
+                wasSatisfied ();
 				break;
 			}		
 		}	
@@ -239,6 +248,13 @@ public class agents : MonoBehaviour {
             ResourceManager.resourceTable[resourcePosition].getChairPosition(itemIndex).GetComponent<SpriteRenderer>().sprite = emtStool;
             //ResourceManager.resourceTable[resourcePosition].getChairPosition(0).GetChild(0).GetComponent<SpriteRenderer>().enabled = true;
 			ResourceManager.resourceTable[resourcePosition].getChairPosition(itemIndex).GetChild(0).GetComponent<SpriteRenderer>().enabled = true;
+        }
+
+        if (resourceInUse == "Bed")
+        {
+            this.GetComponent<SpriteRenderer>().enabled = false;
+            ResourceManager.resourceTable[resourcePosition].getPosition(itemIndex).GetChild(1).GetComponent<SpriteRenderer>().enabled = false;
+            ResourceManager.resourceTable[resourcePosition].getPosition(itemIndex).GetComponent<SpriteRenderer>().sprite = messBed;
         }
 
         if (satisfied){
