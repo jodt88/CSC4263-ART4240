@@ -47,7 +47,7 @@ public class Interact : MonoBehaviour {
 
 			if (patron != null) {
 				patron.GetComponent<agents> ().wasAttended ();
-			}
+            }
 
 	    }
 	}

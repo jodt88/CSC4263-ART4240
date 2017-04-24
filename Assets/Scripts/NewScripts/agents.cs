@@ -41,14 +41,14 @@ public class agents : MonoBehaviour {
 		timer = 999999f;
 		resourcePosition = 0;
 		request = InstanceManager.requestList.Dequeue ();
-        if (request == "Bed") { this.transform.GetChild(0).gameObject.gameObject.GetComponent<SpriteRenderer>().sprite = bedT; }
-        else if (request == "Food") { this.transform.GetChild(0).gameObject.gameObject.GetComponent<SpriteRenderer>().sprite = drinkT; }
-        else { this.transform.GetChild(0).gameObject.gameObject.GetComponent<SpriteRenderer>().sprite = questT; }
-            attended = false;
+        attended = false;
 		satisfied = false;
 		arrived = false;
 		isLeaving = false;
 		setValue ();
+        if (request == "Bed") { this.transform.GetChild(0).gameObject.gameObject.GetComponent<SpriteRenderer>().sprite = bedT; }
+        else if (request == "Food") { this.transform.GetChild(0).gameObject.gameObject.GetComponent<SpriteRenderer>().sprite = drinkT; }
+        else { this.transform.GetChild(0).gameObject.gameObject.GetComponent<SpriteRenderer>().sprite = questT; }
 
     }
 	void Start () { 
@@ -90,8 +90,8 @@ public class agents : MonoBehaviour {
 	}
 
 	public void wasAttended(){
-		attended = true;
-        this.transform.GetChild(0).gameObject.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+        attended = true;
+        
     }
 
 	public void wasSatisfied(){
@@ -178,8 +178,6 @@ public class agents : MonoBehaviour {
 
 	public void onReached(bool success){
 		if (success){    
-            //ResourceManager.resourceTable[0].getPosition(resourcePosition).GetComponent<SpriteRenderer>().sprite = (Sprite)Resources.Load("occupied stool");
-
             switch (resourceInUse)
 			{
 			case "Line":
@@ -188,13 +186,14 @@ public class agents : MonoBehaviour {
 			case "Stool": 
 				setTimer (Timers.stoolTimer);
 				setInteractionSprite (0,resourcePosition,occuStool);
-                    //ResourceManager.resourceTable[0].getPosition(resourcePosition).GetComponent<SpriteRenderer>().enabled = false;
-                    //this.GetComponent<SpriteRenderer>().sprite = occuStool;
+                //ResourceManager.resourceTable[0].getPosition(resourcePosition).GetComponent<SpriteRenderer>().enabled = false;
                 break;
 			case "Food":
 				setTimer (Timers.foodTimer);
-				arrived = true;
-				wasSatisfied ();
+                this.GetComponent<SpriteRenderer>().enabled = false;
+                ResourceManager.resourceTable[resourcePosition].getChairPosition(0).GetComponent<SpriteRenderer>().sprite = occuStool;
+                arrived = true;
+                wasSatisfied ();
 				break;
 			case "Quest":
 				setTimer (Timers.questTimer);
@@ -229,6 +228,11 @@ public class agents : MonoBehaviour {
         {
             ResourceManager.resourceTable[0].swapAvailable(resourcePosition);
             ResourceManager.resourceTable[0].getPosition(resourcePosition).GetComponent<SpriteRenderer>().sprite = emtStool;
+        }
+
+        if (resourceInUse == "Food")
+        {
+            ResourceManager.resourceTable[resourcePosition].getChairPosition(0).GetComponent<SpriteRenderer>().sprite = emtStool;
         }
 
         if (satisfied){
@@ -286,7 +290,7 @@ public class agents : MonoBehaviour {
 	}
 
 	public void resetInteractionSprite(int resource, int pos, Sprite image){
-		this.transform.GetChild(resource).gameObject.gameObject.GetComponent<SpriteRenderer>().enabled = true;
+		this.transform.GetChild(resource).gameObject.gameObject.GetComponent<SpriteRenderer>().enabled = false;
 		this.GetComponent<SpriteRenderer>().enabled = true;
 		ResourceManager.resourceTable [resource].getPosition (pos).name = this.name;
 		ResourceManager.resourceTable[resource].getPosition(pos).GetComponent<SpriteRenderer>().sprite = image;
