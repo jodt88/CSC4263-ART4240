@@ -58,6 +58,10 @@ public class ResourceManager : MonoBehaviour {
 
 	}
 
+	public void initializeValues(){
+		
+	}
+
 	public void enableBeds(int upgrade){
 		int bedsEnabled = StoreData.initialBeds+upgrade;
 		GameObject table = GameObject.Find ("Beds");
