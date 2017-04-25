@@ -12,6 +12,7 @@ public class mainMenu : MonoBehaviour {
 	public GUIStyle SubStyle;
 
     public static bool cheatActivated = false;
+    public static bool pressedSpace = false; //Utilized by MainMenuMusic script
 
 	// Variables for the cheat code
 	private int sequenceIndex;
@@ -61,6 +62,7 @@ public class mainMenu : MonoBehaviour {
 
 	IEnumerator performFade3 ()
 	{
+        pressedSpace = true;
 		// fade out the scene
 		float fadeTime = GameObject.Find("ScreenFader").GetComponent<SceneFade>().BeginFade(1);    
 		yield return new WaitForSeconds(fadeTime);

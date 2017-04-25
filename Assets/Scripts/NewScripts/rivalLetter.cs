@@ -10,6 +10,8 @@ public class rivalLetter : MonoBehaviour {
 	public GUIStyle LetterStyle;	// settings for the GUI
 	public GUIStyle SubStyle;	// settings for the GUI
 
+    public static bool winGame = false;
+
 
 	void OnGUI()
 	{
@@ -33,6 +35,7 @@ public class rivalLetter : MonoBehaviour {
 		}
 		else if (Inn.day == 8 && Inn.opponentScore > Inn.playerScore_net)
 		{
+            winGame = true;
 			GUI.Label (new Rect (Screen.width / 2 - 350, Screen.height / 2 - 25, 100, 50),
 				"Dear New Guy," +
 				"\n\n" +

@@ -18,6 +18,7 @@ public class StoreData : MonoBehaviour
     int bedPrice = 200;
     int tablePrice = 100;
     int musicPrice = 300;
+    public static bool pressedFour = false; //Utilized by StoreMusic script
 
     List<AudioSource> audio = new List<AudioSource>();
 
@@ -99,6 +100,7 @@ public class StoreData : MonoBehaviour
         //Start Next Day
         if( Input.GetKeyDown(KeyCode.Alpha4))
         {
+            pressedFour = true;
             Inn.playerScore_net = money;
             musicFadeInTrigger = true;
 			StartCoroutine(performFade2());
