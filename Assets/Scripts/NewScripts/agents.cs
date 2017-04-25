@@ -29,6 +29,7 @@ public class agents : MonoBehaviour {
     public Sprite questT;
     public Sprite sleepF;
     public Sprite messBed;
+    Sprite myRequest;
 
 
     public PolyNavAgent agent{
@@ -49,9 +50,9 @@ public class agents : MonoBehaviour {
 		arrived = false;
 		isLeaving = false;
 		setValue ();
-        if (request == "Bed") { this.transform.GetChild(0).gameObject.gameObject.GetComponent<SpriteRenderer>().sprite = bedT; }
-        else if (request == "Food") { this.transform.GetChild(0).gameObject.gameObject.GetComponent<SpriteRenderer>().sprite = drinkT; }
-        else { this.transform.GetChild(0).gameObject.gameObject.GetComponent<SpriteRenderer>().sprite = questT; }
+        if (request == "Bed") { myRequest = bedT; }
+        else if (request == "Food") { myRequest = drinkT; }
+        else { myRequest = questT; }
 
     }
 	void Start () { 
@@ -241,6 +242,8 @@ public class agents : MonoBehaviour {
         {
             ResourceManager.resourceTable[0].swapAvailable(resourcePosition);
             ResourceManager.resourceTable[0].getPosition(resourcePosition).GetComponent<SpriteRenderer>().sprite = emtStool;
+            ResourceManager.resourceTable[0].getPosition(resourcePosition).GetChild(0).GetComponent<SpriteRenderer>().enabled = false;
+
         }
 
         if (resourceInUse == "Food")
@@ -303,18 +306,21 @@ public class agents : MonoBehaviour {
 	}
 
 	public void setInteractionSprite(int resource,int pos,Sprite image){
-		this.transform.GetChild(resource).gameObject.gameObject.GetComponent<SpriteRenderer>().enabled = true;
+		//this.transform.GetChild(resource).gameObject.gameObject.GetComponent<SpriteRenderer>().enabled = true;
 		this.GetComponent<SpriteRenderer>().enabled = false;
-		ResourceManager.resourceTable [resource].getPosition (pos).name = this.name;
+        ResourceManager.resourceTable [resource].getPosition (pos).name = this.name;
 		ResourceManager.resourceTable[resource].getPosition(pos).GetComponent<SpriteRenderer>().sprite = image;
-	}
+        ResourceManager.resourceTable[0].getPosition(pos).GetChild(0).GetComponent<SpriteRenderer>().sprite = myRequest;
+        ResourceManager.resourceTable[0].getPosition(pos).GetChild(0).GetComponent<SpriteRenderer>().enabled = true;
+    }
 
 	public void resetInteractionSprite(int resource, int pos, Sprite image){
 		this.transform.GetChild(resource).gameObject.gameObject.GetComponent<SpriteRenderer>().enabled = false;
 		this.GetComponent<SpriteRenderer>().enabled = true;
 		ResourceManager.resourceTable [resource].getPosition (pos).name = this.name;
 		ResourceManager.resourceTable[resource].getPosition(pos).GetComponent<SpriteRenderer>().sprite = image;
-	}
+        ResourceManager.resourceTable[0].getPosition(pos).GetChild(0).GetComponent<SpriteRenderer>().enabled = false;
+    }
 
 	public void setAnimation(Vector2 movingDirection){
 		float direction = Mathf.Abs (movingDirection.x) - Mathf.Abs (movingDirection.y);
