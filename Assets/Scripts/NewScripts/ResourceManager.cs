@@ -13,7 +13,8 @@ public class ResourceManager : MonoBehaviour {
 	// Use this for initialization
 	void Start(){
 
-		
+		enableBeds (StoreData.bedUpgrades);
+		enableTables (StoreData.tableUpgrades);
 	}
 	void Awake () {
 		if (Inn.day == 1)
@@ -39,8 +40,7 @@ public class ResourceManager : MonoBehaviour {
 
 			count++;
 		}
-		enableBeds (StoreData.bedUpgrades);
-		enableTables (StoreData.tableUpgrades);
+
 	}
 
 	// Update is called once per frame
@@ -59,17 +59,17 @@ public class ResourceManager : MonoBehaviour {
 	}
 
 	public void enableBeds(int upgrade){
-		int bedsEnabledPerUpgrade = 1*upgrade;
+		int bedsEnabled = StoreData.initialBeds+upgrade;
 		GameObject table = GameObject.Find ("Beds");
-		for(int i = 0; i<=bedsEnabledPerUpgrade;i++)
+		for(int i = 0; i<bedsEnabled;i++)
 			table.transform.GetChild (i).gameObject.SetActive (true);	
 	}
 
 	public void enableTables(int upgrade){
-		int tablesEnabledPerUpgrade = 2*upgrade;
+		int tablesEnabled = StoreData.initialTables+upgrade;
 		GameObject table = GameObject.Find ("Tables");
-		for(int i = 0; i<=tablesEnabledPerUpgrade;i++)
-			table.transform.GetChild (upgrade).gameObject.SetActive (true);
+		for(int i = 0; i<tablesEnabled;i++)
+			table.transform.GetChild (i).gameObject.SetActive (true);
 	}
 }
 

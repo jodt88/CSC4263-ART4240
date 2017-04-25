@@ -14,7 +14,7 @@ public class GameClock : MonoBehaviour
         if (SceneManager.GetActiveScene().name == "main")
         {
             Inn.hour = 0;
-            Inn.minute = 10;
+            Inn.minute = 60;
 							// also increment the day
 			Inn.playerScore_now = 0;	// also reset day's profit to 0
         }

@@ -10,6 +10,8 @@ public class StoreData : MonoBehaviour
     public static int bedUpgrades=0;
     public static int tableUpgrades=0;
     public static int musicUpgrades=0;
+	public static int initialBeds = 2;
+	public static int initialTables = 2;
     int maxBedUpgrades = 6;
     int maxTableUpgrades = 6;
     int maxMusicUpgrades = 5;
