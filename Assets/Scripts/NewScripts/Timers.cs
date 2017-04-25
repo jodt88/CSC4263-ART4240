@@ -5,7 +5,7 @@ using System.Collections;
 //also known as the Parent class.
 public static class Timers
 {
-	public static float lineTimer=7f;
+	public static float lineTimer=8f;
 	public static float stoolTimer=15f;
 	public static float foodTimer=13f;
 	public static float foodCleanTimer = 5f;

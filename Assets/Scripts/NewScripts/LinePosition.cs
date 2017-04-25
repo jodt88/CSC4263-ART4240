@@ -13,7 +13,7 @@ public class LinePosition : MonoBehaviour {
 		patron = null;
 		triggered = false;
 		position = transform.GetSiblingIndex();
-		poll=0.07f;
+		poll=0.08f;
 	}
 
 	// Update is called once per frame
@@ -27,7 +27,7 @@ public class LinePosition : MonoBehaviour {
 				else
 					checkIfNextAvailable ();
 			}
-			poll = .07f;
+			poll = .08f;
 		}
 	}
 	//if they enter
