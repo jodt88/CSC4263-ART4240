@@ -6,25 +6,25 @@ using UnityEngine;
 public class ResourceManager : MonoBehaviour {
 
 
-	public static List<Resource> resourceTable = new List<Resource>(); 
+	public static List<Resource> resourceTable= new List<Resource>();  
 	public static int playerScore;
 	public static int opponentScore;
 
 	// Use this for initialization
 	void Start(){
-		enableBeds (StoreData.bedUpgrades);
-		enableTables (StoreData.tableUpgrades);
+
 		
 	}
 	void Awake () {
-		
+		if (Inn.day == 1)
+			resourceTable = new List<Resource>(); 
 		int count = 0;
 
 		foreach (Transform child in transform) {
 			Resource resource = new Resource ();
 			resource.setChild (child);
 
-            if (Inn.day == 1||mainMenu.cheatActivated)
+			if (Inn.day == 1 || mainMenu.cheatActivated)
                 resourceTable.Add(resource);
             else
                 resourceTable[count] = resource;
@@ -37,12 +37,10 @@ public class ResourceManager : MonoBehaviour {
 			else
 				resource.setIsAvailableTable (child.childCount);
 
-			
-
-
-
 			count++;
 		}
+		enableBeds (StoreData.bedUpgrades);
+		enableTables (StoreData.tableUpgrades);
 	}
 
 	// Update is called once per frame
