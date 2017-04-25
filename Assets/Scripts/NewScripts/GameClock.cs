@@ -14,7 +14,7 @@ public class GameClock : MonoBehaviour
         if (SceneManager.GetActiveScene().name == "main")
         {
             Inn.hour = 0;
-            Inn.minute = 60;
+            Inn.minute = 10;
 							// also increment the day
 			Inn.playerScore_now = 0;	// also reset day's profit to 0
         }
@@ -55,20 +55,22 @@ public class GameClock : MonoBehaviour
     }
 
     IEnumerator performFade()
-    {
-        // fade out the scene
-        float fadeTime = GameObject.Find("ClockAndFade").GetComponent<SceneFade>().BeginFade(1);    
-        yield return new WaitForSeconds(fadeTime);
+	{
+		// fade out the scene
+		float fadeTime = GameObject.Find ("ClockAndFade").GetComponent<SceneFade> ().BeginFade (1);    
+		yield return new WaitForSeconds (fadeTime);
 
-        // check what the current scene is, and load the appropriate scene
-        if (SceneManager.GetActiveScene().name == "main")
-        {
-            SceneManager.LoadScene("End of Day Recap");
-            musicFadeOutTrigger = true;
-        }
-        else if (SceneManager.GetActiveScene().name == "End of Day Recap")
-            SceneManager.LoadScene("Store");
-		else if (SceneManager.GetActiveScene().name == "End of Day Recap" && Inn.day == 7)
-			SceneManager.LoadScene("Letter");
-    }
+		// check what the current scene is, and load the appropriate scene
+		if (SceneManager.GetActiveScene ().name == "main") {
+			SceneManager.LoadScene ("End of Day Recap");
+			musicFadeOutTrigger = true;
+		} 
+		else if (SceneManager.GetActiveScene ().name == "End of Day Recap") 
+		{
+			if (Inn.day == 8)
+				SceneManager.LoadScene ("Letter");
+			else
+				SceneManager.LoadScene ("Store");
+		}
+	}
 }
