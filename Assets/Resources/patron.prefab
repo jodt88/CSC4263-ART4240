@@ -99,8 +99,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   foundNextPosition: 0
-  occuStool: {fileID: 21300000, guid: 9a10d3d93c3adfa40b919ce095fd0e81, type: 3}
-  emtStool: {fileID: 21300000, guid: 9ff41d7ca2f9a6b4ab1b74b688140a8e, type: 3}
+  femSitB: {fileID: 21300004, guid: 25aadda1580dfdf458d305ff0f263886, type: 3}
+  femSitL: {fileID: 21300002, guid: 25aadda1580dfdf458d305ff0f263886, type: 3}
+  femSitR: {fileID: 21300000, guid: 25aadda1580dfdf458d305ff0f263886, type: 3}
+  femSitF: {fileID: 21300000, guid: 98cec6bbee6638f47afe2a3225ab0fe2, type: 3}
   happyT: {fileID: 21300000, guid: bc396c39a12fa79418242f6a069ac210, type: 3}
   sadT: {fileID: 21300000, guid: 0b3204ac794419f43abcde9f14681b53, type: 3}
   drinkT: {fileID: 21300000, guid: 71bcdd63cc3e6e84e9253e0ce12a57c3, type: 3}

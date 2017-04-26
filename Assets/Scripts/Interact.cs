@@ -23,7 +23,7 @@ public class Interact : MonoBehaviour {
 				case "Food":
 					break;
 				case "Stool":
-					interactPatron ();
+					interactPatron();
 					break;
                 case "Chair":
                     interactTable();
@@ -44,13 +44,12 @@ public class Interact : MonoBehaviour {
 	}
 
 	void interactPatron(){
-		//checks that left button was clicked while behind bard
+		//checks that left button was clicked while behind bar
 		if (tavernObj.name.Contains("patron")&&barSensor.behindBar)
         {
 			GameObject patron = findPatron ();
 
 			if (patron != null) {
-				patron.GetComponent<agents> ().wasAttended ();
             }
 
 	    }

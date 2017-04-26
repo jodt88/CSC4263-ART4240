@@ -972,24 +972,24 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   navObstacles:
-  - {fileID: 702063163}
-  - {fileID: 1072546544}
-  - {fileID: 1482404199}
-  - {fileID: 143914094}
-  - {fileID: 421759427}
-  - {fileID: 421759426}
-  - {fileID: 421759425}
-  - {fileID: 421759424}
-  - {fileID: 421759422}
-  - {fileID: 1971277707}
-  - {fileID: 1301470315}
-  - {fileID: 1025761293}
-  - {fileID: 850389817}
-  - {fileID: 659519826}
-  - {fileID: 915870127}
-  - {fileID: 787653057}
-  - {fileID: 439843794}
   - {fileID: 319206624}
+  - {fileID: 850389817}
+  - {fileID: 421759424}
+  - {fileID: 439843794}
+  - {fileID: 1072546544}
+  - {fileID: 1971277707}
+  - {fileID: 659519826}
+  - {fileID: 421759427}
+  - {fileID: 421759425}
+  - {fileID: 421759426}
+  - {fileID: 1025761293}
+  - {fileID: 421759422}
+  - {fileID: 1301470315}
+  - {fileID: 143914094}
+  - {fileID: 915870127}
+  - {fileID: 1482404199}
+  - {fileID: 702063163}
+  - {fileID: 787653057}
   inflateRadius: 0.1
   regenerateFlag: 1
 --- !u!4 &505974337
@@ -1287,13 +1287,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4544055466894712, guid: 4b09ecbbed30de844b07ae309c49caa8, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 0.5721475
-      objectReference: {fileID: 0}
-    - target: {fileID: 4544055466894712, guid: 4b09ecbbed30de844b07ae309c49caa8, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 0.57066184
+    - target: {fileID: 212983932960286224, guid: 4b09ecbbed30de844b07ae309c49caa8,
+        type: 2}
+      propertyPath: m_SortingOrder
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4b09ecbbed30de844b07ae309c49caa8, type: 2}
