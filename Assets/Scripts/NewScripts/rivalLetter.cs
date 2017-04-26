@@ -12,26 +12,32 @@ public class rivalLetter : MonoBehaviour {
 
     public static bool winGame = false;
 
+	public int letterPage = 1;
+	public string letterSubContent = "Press the DOWN ARROW to go to next page.";
+	public string letterContent = 
+		"Dear New Guy," +
+		"\n\n" +
+		"   Hi! It's me, your rival. You know, from the VERY successful inn\n" +
+		"a few paces away. I doubt you'll ever reach my caliber of success.\n" +
+		"But I'll give you the benefit of the doubt. Let's make our new\n" +
+		"business rivalry a bit more interesting. Let's say, in a week's time,\n" +
+		"if my inn makes more money than yours, you make like a corrupt jarl\n" +
+		"and leave town. In the very unlikely chance that your inn makes more\n" +
+		"money than mine, I shut down. I'll even through in an old copy of The\n" +
+		"Innkeeper's Guide, to keep you from making a complete fool of yourself.\n" +
+		"Best of luck to you with your squalor." +
+		"\n\n" +
+		"Yours Truly,\n" +
+		"The best innkeeper in town\n" +
+		"from the Jagged Dragon Bar & Inn\n";
+
 
 	void OnGUI()
 	{
 		if (Inn.day == 1) 
-		{
-			GUI.Label (new Rect (Screen.width / 2 - 350, Screen.height / 2 - 25, 100, 50),
-				"Dear New Guy," +
-				"\n\n" +
-				"   Hi! It's me, your rival. You know, from the VERY successful inn\n" +
-				"a few paces away. I doubt you'll ever reach my caliber of success.\n" +
-				"But I'll give you the benefit of the doubt. Let's make our new\n" +
-				"business rivalry a bit more interesting. Let's say, in a week's time,\n" +
-				"if my inn makes more money than yours, you make like a corrupt jarl\n" +
-				"and leave town. In the very unlikely chance that your inn makes more\n" +
-				"money than mine, I shut down. Best of luck to you with your squalor." +
-				"\n\n" +
-				"Yours Truly,\n" +
-				"The best innkeeper in town\n" +
-				"from the Jagged Dragon Bar & Inn", LetterStyle);
-			GUI.Label (new Rect (Screen.width / 2-50, Screen.height / 2+200, 100, 50), "Press SPACEBAR to continue.", SubStyle);
+		{	
+			GUI.Label (new Rect (Screen.width / 2 - 350, Screen.height / 2 - 25, 100, 50), letterContent, LetterStyle);
+			GUI.Label (new Rect (Screen.width / 2-50, Screen.height / 2+200, 100, 50), letterSubContent, SubStyle);
 		}
 		else if (Inn.day == 8 && Inn.opponentScore > Inn.playerScore_net)
 		{
@@ -92,6 +98,66 @@ public class rivalLetter : MonoBehaviour {
 
 	void Update ()
 	{
+		if (Input.GetKeyDown(KeyCode.DownArrow) && letterPage == 1)
+		{
+			letterPage++;
+			letterContent = 
+				"THE INNKEEPERS GUIDE\n\n" +
+				"Hello there! So you decided to buy an inn. So what comes next?\n" +
+				"With this short-but-sweet guide to innkeeping, you're sure to\n" +
+				"become a success in no time. So let's get down to business...\n" +
+				"\n" +
+				"THE FRONT COUNTER:\n" +
+				"Patrons who enter your inn will likely want one of two things,\n" +
+				"a bed to rest their weary head, or a table with which they can\n" +
+				"fill their bellies with mead; you must be behind the counter\n" +
+				"to tend to them, so be sure to man that station regularly.\n" +
+				"If you are not there for a while, patrons may leave angry.";
+		}
+		else if (Input.GetKeyDown(KeyCode.DownArrow) && letterPage == 2)
+		{
+			letterPage++;
+			letterContent =
+				"CLEANLINESS:\n" +
+				"they are sure to leave a mess when they leave. It is up to\n" +
+				"you to make sure that the area is clean for others who come\n" +
+				"into your inn. Just make your way to the mess, and try to clean\n" +
+				"\n" +
+				"HAPPINESS:\n" +
+				"It's important to keep your patron's happy, because it is ultimately\n" +
+				"their business that pays the jarl's taxes. A happy patron will pay\n" +
+				"you on their way out. A dissatisfied patron will leave in favor of\n" +
+				"someone else, bringing you ever so closer to debt.";
+		}
+		else if (Input.GetKeyDown(KeyCode.DownArrow) && letterPage == 3)
+		{
+			letterPage++;
+			letterContent =
+				"RESOURCES:\n" +
+				"At some point during your business endeavors, you're going to\n" +
+				"need to buy more items. This could be in the form of more beds,\n" +
+				"tables, or minstrels to provide entertainment to your inn. The\n" +
+				"inn is too busy during the day to shop around for such things.\n" +
+				"Once a business day has concluded, you can purchase items from\n" +
+				"the store. Be wise with how you spend your money though,\n" +
+		}
+		else if (Input.GetKeyDown(KeyCode.DownArrow) && letterPage == 4)
+		{ 
+			letterContent =
+				"\n" +
+				"FINANCES AND RIVALRY:\n" +
+				"Rivalry comes with the territory of owning an inn. It's\n" +
+				"important to remain cordial with your rival, but don't let them\n" +
+				"your finances as well as those of your rival to determine how you\n" +
+				"are doing competitively.\n" +
+				"\n" +
+				"So that about sums it up. Now you're ready to experience the joys\n" +
+				"of running your own inn. Good luck to you, and may the Divines\n" +
+				"smile on you!\n\n" +
+				"-Anonymous";
+			letterSubContent = "Press the SPACEBAR to continue.";
+		}
+
 		// Start the game
 		if( Input.GetKeyDown(KeyCode.Space))
 		{
