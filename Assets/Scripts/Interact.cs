@@ -7,7 +7,8 @@ public class Interact : MonoBehaviour {
     GameObject sensorObj;
     public Sprite cleanBed;
 	// Use this for initialization
-	void Start () {
+	void Start ()
+    {
 	}
 	
 	// Update is called once per frame
@@ -58,9 +59,9 @@ public class Interact : MonoBehaviour {
 
     void interactTable()
     {
-        if(tavernObj.transform.parent.gameObject.name == sensorObj.name)
+        if(tavernObj.transform.parent.gameObject.GetComponent<TableSensor>().getByTable())
         {
-            ResourceManager.resourceTable[2].swapAvailable(tavernObj.transform.GetSiblingIndex()+sensorObj.transform.GetSiblingIndex()*4);
+            ResourceManager.resourceTable[2].swapAvailable(tavernObj.transform.GetSiblingIndex()+ tavernObj.transform.parent.transform.GetSiblingIndex()*4);
             tavernObj.transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = false;
         }
     }

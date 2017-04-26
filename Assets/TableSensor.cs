@@ -10,8 +10,8 @@ public class TableSensor : MonoBehaviour {
     {
         if (other.gameObject.name == "Barkeeper")
         {
-            byTable = true;
-            other.gameObject.GetComponent<Interact>().setSensorObject(this.gameObject);
+            setByTable(true);
+            //other.gameObject.GetComponent<Interact>().setSensorObject(this.gameObject);
         }
     }
 
@@ -19,8 +19,18 @@ public class TableSensor : MonoBehaviour {
     {
         if (other.gameObject.name == "Barkeeper")
         {
-            byTable = false;
-            other.gameObject.GetComponent<Interact>().setSensorObject(null);
+            setByTable(false);
+           //other.gameObject.GetComponent<Interact>().setSensorObject(null);
         }
+    }
+
+    void setByTable(bool b)
+    {
+        byTable = b;
+    }
+
+    public bool getByTable()
+    {
+        return byTable;
     }
 }
