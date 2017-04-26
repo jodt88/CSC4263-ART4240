@@ -67,10 +67,20 @@ public class agents : MonoBehaviour {
         else { myRequest = questT; }
 
         //check for patron geder; set sitting sprites
-        myBack = femSitB;
-        myLeft = femSitL;
-        myRight = femSitR;
-        myFront = femSitF;
+        if (this.name.Contains("patronM"))
+        {
+            myBack = maSitB;
+            myLeft = maSitL;
+            myRight = maSitR;
+            myFront = maSitF;
+        }
+        else
+        {
+            myBack = femSitB;
+            myLeft = femSitL;
+            myRight = femSitR;
+            myFront = femSitF;
+        } 
 
     }
 	void Start () { 
