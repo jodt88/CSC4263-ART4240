@@ -16,6 +16,7 @@ TagManager:
   - StoreInstruction
   - Chair
   - Line
+  - Minstrel
   layers:
   - Default
   - TransparentFX

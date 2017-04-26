@@ -21,10 +21,14 @@ public class agents : MonoBehaviour {
 	private int value; 
 	private bool arrived;
 	private bool isLeaving;
-    public Sprite femSitB; //back sitting sprite
-    public Sprite femSitL; //leftsitting sprite
-    public Sprite femSitR; //right sitting sprite
+    public Sprite femSitB; //back sitting sprite for females
+    public Sprite femSitL; //leftsitting sprite for females
+    public Sprite femSitR; //right sitting sprite for females
     public Sprite femSitF; //front facing sitting sprite
+    public Sprite maSitB; //back sitting sprite for males
+    public Sprite maSitL; //leftsitting sprite for males
+    public Sprite maSitR; //right sitting sprite for males
+    public Sprite maSitF; //front facing sitting sprite for males
     public Sprite happyT;
     public Sprite sadT;
     public Sprite drinkT;

@@ -9,8 +9,11 @@ public class InstanceManager : MonoBehaviour {
 	int spawnTotal;
 	string request; //the request of the patron 
 	public static Queue<string> requestList = new Queue<string> ();//holds all the requests for the day  this will be used to act as a way to determine which patron will be spawned next
-	public  string[] requests = {"Bed","Food","Quest"};
+	public string[] requests = {"Bed","Food","Quest"};
+    public string[] genderList = { "patron, patronM" };
+    public string patronPrefab;
 	public static Hashtable thoughtBubble = new Hashtable ();
+    public Sprite maleSprt;
     
 	void Awake(){
 		initializePatronSpawn ();
@@ -115,11 +118,16 @@ public class InstanceManager : MonoBehaviour {
 	}
 
 	void Spawn()
-	{ 
-		//spawns the patron prefab 
-		patronInstance = Instantiate(Resources.Load("patron"),transform.position,transform.rotation) as GameObject;
-		//gives each instace of patron a unique name
-		patronInstance.name = "patron"+request + count;   
+	{
+        int random = Random.Range(0, 100) % 2;
+        
+        if(random ==1)
+            patronInstance = Instantiate(Resources.Load("patronM"),transform.position,transform.rotation) as GameObject;
+        else
+            patronInstance = Instantiate(Resources.Load("patron"), transform.position, transform.rotation) as GameObject;
+        //   patronInstance.GetComponent<SpriteRenderer>().sprite = maleSprt;
+        //gives each instace of patron a unique name
+        patronInstance.name = "patron"+request + count;   
 	}
 
 }
