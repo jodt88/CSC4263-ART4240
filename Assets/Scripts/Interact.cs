@@ -49,7 +49,9 @@ public class Interact : MonoBehaviour {
         {
 			GameObject patron = findPatron ();
 
-			if (patron != null) {
+			if (patron != null)
+            {
+                patron.GetComponent<agents>().wasAttended();
             }
 
 	    }
