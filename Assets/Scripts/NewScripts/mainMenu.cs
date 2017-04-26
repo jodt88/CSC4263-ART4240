@@ -13,9 +13,10 @@ public class mainMenu : MonoBehaviour {
 
     public static bool cheatActivated = false;
     public static bool pressedSpace = false; //Utilized by MainMenuMusic script
+    List<AudioSource> audio = new List<AudioSource>();
 
-	// Variables for the cheat code
-	private int sequenceIndex;
+    // Variables for the cheat code
+    private int sequenceIndex;
 	private KeyCode[] sequence = new KeyCode[] {
 		KeyCode.J,
 		KeyCode.O,
@@ -43,6 +44,8 @@ public class mainMenu : MonoBehaviour {
 		// Start the game
 		if( Input.GetKeyDown(KeyCode.Space))
 		{
+            GetComponents(audio);
+            audio[0].Play();
 			StartCoroutine (performFade3());
 		}
 

@@ -9,7 +9,9 @@ public class EOD_display : MonoBehaviour
 	public GUIStyle TitleStyle;
 	public GUIStyle SubStyle;
 
-	void OnGUI () 
+    List<AudioSource> audio = new List<AudioSource>();
+
+    void OnGUI () 
 	{
 		// display a recap of the day's information
 		GUI.Label (new Rect (Screen.width/2-50, Screen.height/2-125, 100, 50), "Day " + (Inn.day-1).ToString() + " Recap", TitleStyle);
@@ -23,5 +25,11 @@ public class EOD_display : MonoBehaviour
 	{
 		// add the day's profit to the inn's total profit
 		Inn.playerScore_net += Inn.playerScore_now;
+        GetComponents(audio);
+
+        if (Inn.playerScore_now > Inn.opponentScore)
+            audio[0].Play();
+        else
+            audio[1].Play();
 	}
 }
