@@ -32,7 +32,7 @@ public class MusicPlayer : MonoBehaviour
 
         fadingOut = false;
 
-        volumeOut = 100f;
+        volumeOut = 50f;
 
 	}
 
@@ -50,7 +50,7 @@ public class MusicPlayer : MonoBehaviour
                 }
                 else
                 {
-                    volumeOut = 100f;
+                    volumeOut = 50f;
                     songs[upgradeState].Stop();
                     GameClock.musicFadeOutTrigger = false;
                 }
