@@ -21,8 +21,10 @@ public class agents : MonoBehaviour {
 	private int value; 
 	private bool arrived;
 	private bool isLeaving;
-    public Sprite occuStool;
-    public Sprite emtStool;
+    public Sprite femSitB; //back sitting sprite
+    public Sprite femSitL; //leftsitting sprite
+    public Sprite femSitR; //right sitting sprite
+    public Sprite femSitF; //front facing sitting sprite
     public Sprite happyT;
     public Sprite sadT;
     public Sprite drinkT;
@@ -31,6 +33,10 @@ public class agents : MonoBehaviour {
     public Sprite sleepF;
     public Sprite messBed;
     Sprite myRequest;
+    Sprite myBack;
+    Sprite myLeft;
+    Sprite myRight;
+    Sprite myFront;
 
 
     public PolyNavAgent agent{
@@ -55,6 +61,12 @@ public class agents : MonoBehaviour {
         if (request == "Bed") { myRequest = bedT; }
         else if (request == "Food") { myRequest = drinkT; }
         else { myRequest = questT; }
+
+        //check for patron geder; set sitting sprites
+        myBack = femSitB;
+        myLeft = femSitL;
+        myRight = femSitR;
+        myFront = femSitF;
 
     }
 	void Start () { 
@@ -152,7 +164,7 @@ public class agents : MonoBehaviour {
 	public void attemptRequest(){
 		activateTimer = false;
 		ResourceManager.resourceTable [0].swapAvailable (itemIndex);
-		resetInteractionSprite (0, itemIndex, emtStool);
+		resetInteractionSprite (0, itemIndex);
 		switch (request) {
 		case "Bed":
 			resourcePosition = 1;
@@ -200,13 +212,32 @@ public class agents : MonoBehaviour {
 				break;
 			case "Stool": 
 				setTimer (Timers.stoolTimer);
-				setInteractionSprite (0,itemIndex,occuStool);
+                setInteractionSprite ();
                 //ResourceManager.resourceTable[0].getPosition(resourcePosition).GetComponent<SpriteRenderer>().enabled = false;
                 break;
 			case "Food":
 				setTimer (Timers.foodTimer);
                 this.GetComponent<SpriteRenderer>().enabled = false;
-                ResourceManager.resourceTable[resourcePosition].getChairPosition(itemIndex).GetComponent<SpriteRenderer>().sprite = occuStool;
+                if (ResourceManager.resourceTable[resourcePosition].getChairPosition(itemIndex).name == "TopChair")
+                    {
+                        ResourceManager.resourceTable[resourcePosition].getChairPosition(itemIndex).GetChild(1).GetComponent<SpriteRenderer>().sprite = myFront;
+                        ResourceManager.resourceTable[resourcePosition].getChairPosition(itemIndex).GetChild(1).GetComponent<SpriteRenderer>().enabled = true;
+                    }
+                if (ResourceManager.resourceTable[resourcePosition].getChairPosition(itemIndex).name == "BottomChair")
+                    {
+                        ResourceManager.resourceTable[resourcePosition].getChairPosition(itemIndex).GetChild(1).GetComponent<SpriteRenderer>().sprite = myBack;
+                        ResourceManager.resourceTable[resourcePosition].getChairPosition(itemIndex).GetChild(1).GetComponent<SpriteRenderer>().enabled = true;
+                    }
+                if (ResourceManager.resourceTable[resourcePosition].getChairPosition(itemIndex).name == "LeftChair")
+                    {
+                        ResourceManager.resourceTable[resourcePosition].getChairPosition(itemIndex).GetChild(1).GetComponent<SpriteRenderer>().sprite = myLeft;
+                        ResourceManager.resourceTable[resourcePosition].getChairPosition(itemIndex).GetChild(1).GetComponent<SpriteRenderer>().enabled = true;
+                    }
+                if (ResourceManager.resourceTable[resourcePosition].getChairPosition(itemIndex).name == "RightChair")
+                    {
+                        ResourceManager.resourceTable[resourcePosition].getChairPosition(itemIndex).GetChild(1).GetComponent<SpriteRenderer>().sprite = myRight;
+                        ResourceManager.resourceTable[resourcePosition].getChairPosition(itemIndex).GetChild(1).GetComponent<SpriteRenderer>().enabled = true;
+                    }
                 arrived = true;
                 wasSatisfied ();
 				break;
@@ -222,7 +253,6 @@ public class agents : MonoBehaviour {
                 //ResourceManager.resourceTable[resourcePosition].getPosition(resourcePosition).GetChild(0).GetComponent<SpriteRenderer>().enabled = true;
                 arrived = true;
                 this.GetComponent<SpriteRenderer>().enabled = false;
-
                 ResourceManager.resourceTable[resourcePosition].getPosition(itemIndex).GetChild(1).GetComponent<SpriteRenderer>().sprite = sleepF;
                 ResourceManager.resourceTable[resourcePosition].getPosition(itemIndex).GetChild(1).GetComponent<SpriteRenderer>().enabled = true;
                 wasSatisfied ();
@@ -250,15 +280,17 @@ public class agents : MonoBehaviour {
 		if (resourceInUse == "Stool")
         {
             ResourceManager.resourceTable[0].swapAvailable(itemIndex);
-            ResourceManager.resourceTable[0].getPosition(itemIndex).GetComponent<SpriteRenderer>().sprite = emtStool;
+            //ResourceManager.resourceTable[0].getPosition(itemIndex).GetComponent<SpriteRenderer>().sprite = emtStool;
             ResourceManager.resourceTable[0].getPosition(itemIndex).GetChild(0).GetComponent<SpriteRenderer>().enabled = false;
+            ResourceManager.resourceTable[0].getPosition(itemIndex).GetChild(1).GetComponent<SpriteRenderer>().enabled = false;
 
         }
 
         if (resourceInUse == "Food"&&satisfied)
         {
-            ResourceManager.resourceTable[resourcePosition].getChairPosition(itemIndex).GetComponent<SpriteRenderer>().sprite = emtStool;
+            //ResourceManager.resourceTable[resourcePosition].getChairPosition(itemIndex).GetComponent<SpriteRenderer>().sprite = emtStool;
 			ResourceManager.resourceTable[resourcePosition].getChairPosition(itemIndex).GetChild(0).GetComponent<SpriteRenderer>().enabled = true;
+            ResourceManager.resourceTable[resourcePosition].getChairPosition(itemIndex).GetChild(1).GetComponent<SpriteRenderer>().enabled = false;
         }
 
         if (resourceInUse == "Bed"&&satisfied)
@@ -326,21 +358,24 @@ public class agents : MonoBehaviour {
 
 	}
 
-	public void setInteractionSprite(int resource,int pos,Sprite image){
-		//this.transform.GetChild(resource).gameObject.gameObject.GetComponent<SpriteRenderer>().enabled = true;
-		this.GetComponent<SpriteRenderer>().enabled = false;
-        ResourceManager.resourceTable [resource].getPosition (pos).name = this.name;
-		ResourceManager.resourceTable[resource].getPosition(pos).GetComponent<SpriteRenderer>().sprite = image;
-        ResourceManager.resourceTable[0].getPosition(pos).GetChild(0).GetComponent<SpriteRenderer>().sprite = myRequest;
-        ResourceManager.resourceTable[0].getPosition(pos).GetChild(0).GetComponent<SpriteRenderer>().enabled = true;
+    public void setInteractionSprite()
+    {
+        this.GetComponent<SpriteRenderer>().enabled = false;
+        ResourceManager.resourceTable[resourcePosition].getPosition(itemIndex).name = this.name;
+        ResourceManager.resourceTable[resourcePosition].getPosition(itemIndex).GetChild(1).GetComponent<SpriteRenderer>().sprite = myBack;
+        ResourceManager.resourceTable[resourcePosition].getPosition(itemIndex).GetChild(1).GetComponent<SpriteRenderer>().enabled = true;
+        ResourceManager.resourceTable[0].getPosition(itemIndex).GetChild(0).GetComponent<SpriteRenderer>().sprite = myRequest;
+        ResourceManager.resourceTable[0].getPosition(itemIndex).GetChild(0).GetComponent<SpriteRenderer>().enabled = true;
     }
 
-	public void resetInteractionSprite(int resource, int pos, Sprite image){
+
+    public void resetInteractionSprite(int resource, int pos){
 		this.transform.GetChild(resource).gameObject.gameObject.GetComponent<SpriteRenderer>().enabled = false;
 		this.GetComponent<SpriteRenderer>().enabled = true;
 		ResourceManager.resourceTable [resource].getPosition (pos).name = this.name;
-		ResourceManager.resourceTable[resource].getPosition(pos).GetComponent<SpriteRenderer>().sprite = image;
+		//ResourceManager.resourceTable[resource].getPosition(pos).GetComponent<SpriteRenderer>().sprite = image;
         ResourceManager.resourceTable[0].getPosition(pos).GetChild(0).GetComponent<SpriteRenderer>().enabled = false;
+        ResourceManager.resourceTable[resource].getPosition(pos).GetChild(1).GetComponent<SpriteRenderer>().enabled = false;
     }
 
 	public void setAnimation(Vector2 movingDirection){
@@ -399,12 +434,12 @@ public class agents : MonoBehaviour {
 		if (resourceInUse == "Stool")
 		{
 			ResourceManager.resourceTable[0].swapAvailable(itemIndex);
-			ResourceManager.resourceTable[0].getPosition(itemIndex).GetComponent<SpriteRenderer>().sprite = emtStool;
+			//ResourceManager.resourceTable[0].getPosition(itemIndex).GetComponent<SpriteRenderer>().sprite = emtStool;
 		}
 
 		else if (resourceInUse == "Food")
 		{
-			ResourceManager.resourceTable[resourcePosition].getChairPosition(itemIndex).GetComponent<SpriteRenderer>().sprite = emtStool;
+			//ResourceManager.resourceTable[resourcePosition].getChairPosition(itemIndex).GetComponent<SpriteRenderer>().sprite = emtStool;
 			ResourceManager.resourceTable[resourcePosition].getChairPosition(itemIndex).GetChild(0).GetComponent<SpriteRenderer>().enabled = true;
 		}
 

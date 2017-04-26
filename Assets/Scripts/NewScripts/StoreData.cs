@@ -54,12 +54,12 @@ public class StoreData : MonoBehaviour
                 GetComponents(audio);
                 money = money - bedPrice;
                 bedUpgrades++;
-                audio[1].Play(); //cha-ching
+                audio[0].Play(); //cha-ching
             }
             else
             {
                 GetComponents(audio);
-                audio[0].Play(); //error
+                audio[1].Play(); //error
             }
         }
         
@@ -71,12 +71,12 @@ public class StoreData : MonoBehaviour
                 GetComponents(audio);
                 money = money - tablePrice;
                 tableUpgrades++;
-                audio[1].Play(); //cha-ching
+                audio[0].Play(); //cha-ching
             }
             else
             {
                 GetComponents(audio);
-                audio[0].Play(); //error
+                audio[1].Play(); //error
             }
         }
         
@@ -88,12 +88,12 @@ public class StoreData : MonoBehaviour
                 GetComponents(audio);
                 money = money - musicPrice;
                 musicUpgrades++;
-                audio[1].Play(); //cha-ching
+                audio[0].Play(); //cha-ching
             }
             else
             {
                 GetComponents(audio);
-                audio[0].Play(); //error
+                audio[1].Play(); //error
             }
         }
 
