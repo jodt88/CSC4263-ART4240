@@ -119,9 +119,11 @@ public class rivalLetter : MonoBehaviour {
 			letterPage++;
 			letterContent =
 				"CLEANLINESS:\n" +
+				"Once a patron sleeps in a bed or drinks at a spot at a table,\n" +
 				"they are sure to leave a mess when they leave. It is up to\n" +
 				"you to make sure that the area is clean for others who come\n" +
 				"into your inn. Just make your way to the mess, and try to clean\n" +
+				"it as quickly as possible so you can return to the front counter.\n" +
 				"\n" +
 				"HAPPINESS:\n" +
 				"It's important to keep your patron's happy, because it is ultimately\n" +
@@ -140,6 +142,7 @@ public class rivalLetter : MonoBehaviour {
 				"inn is too busy during the day to shop around for such things.\n" +
 				"Once a business day has concluded, you can purchase items from\n" +
 				"the store. Be wise with how you spend your money though,\n" +
+				"because those funds come straight from the inn's profit.";
 		}
 		else if (Input.GetKeyDown(KeyCode.DownArrow) && letterPage == 4)
 		{ 
@@ -148,6 +151,7 @@ public class rivalLetter : MonoBehaviour {
 				"FINANCES AND RIVALRY:\n" +
 				"Rivalry comes with the territory of owning an inn. It's\n" +
 				"important to remain cordial with your rival, but don't let them\n" +
+				"overshadow your success. At the end of the day, you can review\n" +
 				"your finances as well as those of your rival to determine how you\n" +
 				"are doing competitively.\n" +
 				"\n" +
