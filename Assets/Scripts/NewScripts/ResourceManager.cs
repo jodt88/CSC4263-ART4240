@@ -185,6 +185,10 @@ public class Resource{
 		}
 		return availableArray;
 	}
+	public bool getIfAvailable(int index){
+		return available [index];
+		
+	}
 
 }
 

@@ -15,6 +15,7 @@ TagManager:
   - Bed
   - StoreInstruction
   - Chair
+  - Line
   layers:
   - Default
   - TransparentFX

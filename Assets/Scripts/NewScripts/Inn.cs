@@ -15,7 +15,7 @@ public static class  Inn
     public static int foodValue=5;//monetary value for food
 
     public static int day=1; //current day
-    public static int hour=0;//current hour
+    public static int hour=3;//current hour
     public static int minute=00;//current minute
 
     public static int patronsInDay;

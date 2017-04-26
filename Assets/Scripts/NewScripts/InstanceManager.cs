@@ -14,7 +14,8 @@ public class InstanceManager : MonoBehaviour {
     
 	void Awake(){
 		initializePatronSpawn ();
-		for(int i = 0;i<50;i++)
+		Debug.Log ("Total that will spawn: " + spawnTotal.ToString());
+		for(int i = 0;i<spawnTotal;i++)
 		{
 			//populates the queue with the order of requests that will be for the day this will be subject to change on later implementation
 			requestList.Enqueue(requests[Random.Range(0,2)]);
@@ -59,33 +60,40 @@ public class InstanceManager : MonoBehaviour {
 		switch (Inn.day) {
 		case 1:
 			Timers.spawnTimer = 5f;
-			spawnTotal = 53;
+			//spawnTotal = 53;
 			break;
 		case 2:
 			Timers.spawnTimer = 4.5f;
-			spawnTotal = 59;
+			//spawnTotal = 59;
 			break;
 		case 3:
 			Timers.spawnTimer = 4f;
-			spawnTotal = 67;
+			//spawnTotal = 67;
 			break;
 		case 4:
 			Timers.spawnTimer = 3.5f;
-			spawnTotal = 67;
+			//spawnTotal = 67;
 			break;
 		case 5:
 			Timers.spawnTimer = 3.0f;
-			spawnTotal = 89;
+			//spawnTotal = 89;
 			break;
 		case 6:
 			Timers.spawnTimer = 2.5f;
-			spawnTotal = 107;
+			//spawnTotal = 107;
 			break;
 		case 7:
 			Timers.spawnTimer = 2f;
-			spawnTotal = 134;
+			//spawnTotal = 134;
 			break;
 		}
+		spawnTotal = (int)calculateSpawnCount (Timers.spawnTimer);
+	}
+
+	public float calculateSpawnCount(float spawnRate){
+		float timeInDay = 60f * (float)Inn.hour + (float)Inn.minute;
+		Debug.Log (timeInDay);
+		return ((timeInDay - (Timers.lineTimer + Timers.stoolTimer + Timers.bedTimer + 2f)) / spawnRate);
 	}
 
 	int getRequestValue()

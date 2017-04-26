@@ -17,6 +17,7 @@ public class agents : MonoBehaviour {
 	private string request; //resource patron wants to use
 	private bool attended; //has the innkeeper acknowledged the patron
 	private bool satisfied; //was the patron able to use their desired resource
+	public bool foundNextPosition;
 	private int value; 
 	private bool arrived;
 	private bool isLeaving;
@@ -42,6 +43,7 @@ public class agents : MonoBehaviour {
 	}
 	void Awake(){
 		activateTimer = false;
+		foundNextPosition = false;
 		timer = 999999f;
 		resourcePosition = 0;
 		request = InstanceManager.requestList.Dequeue ();
@@ -64,18 +66,24 @@ public class agents : MonoBehaviour {
 	void Update () {
 		
 
-		setAnimation (agent.movingDirection);
+		//setAnimation (agent.movingDirection);
 		//if timer is started
 		if (activateTimer) {
 			if (timer > 0f) {
-				if (attended&&!arrived)
+				if (attended && !arrived)
 					attemptRequest ();
+				else if (resourceInUse == "Line") {
+					if (itemIndex > 0)
+						checkIfNextAvailable ();
+					else
+						checkIfStoolAvailable ();
+				}
 				timer -= Time.deltaTime;
-            } else
+			} else
 				activateTimer = false;
 		} else if (!activateTimer && timer <= 0f&&!isLeaving) {
 			leaveTavern (satisfied);
-        } 
+		} 
 
 	}
 
@@ -108,43 +116,43 @@ public class agents : MonoBehaviour {
 		//verifies if the line is empty
 		if (ResourceManager.resourceTable [3].isEmpty ()&&ResourceManager.resourceTable[0].availablePosition()>-1) {
 			//check for stool availability
-			resourcePosition = ResourceManager.resourceTable [0].availablePosition ();
+			itemIndex = ResourceManager.resourceTable [0].availablePosition ();
 
-			if (resourcePosition >= 0) {
+			if (itemIndex >= 0) {
 				//makes resource unavailable to everyone else
-				ResourceManager.resourceTable [0].swapAvailable (resourcePosition);
+				ResourceManager.resourceTable [0].swapAvailable (itemIndex);
 				//gets vector coordinate for position 
 				setResourceInUse ("Stool");
-				position = ResourceManager.resourceTable [0].getPosition (resourcePosition).position;
+				position = ResourceManager.resourceTable [0].getPosition (itemIndex).position;
 				//move to position of next resource
 
 			} 
 		}
 		else {
 			//Find next available line
-			resourcePosition = ResourceManager.resourceTable [3].availableLinePosition ();
-			ResourceManager.resourceTable [3].swapAvailable (resourcePosition);
+			itemIndex = ResourceManager.resourceTable [3].availableLinePosition ();
+			ResourceManager.resourceTable [3].swapAvailable (itemIndex);
 			setResourceInUse("Line");
 			//gets vector coordinate for position 
-			position = ResourceManager.resourceTable[3].getPosition(resourcePosition).position;
+			position = ResourceManager.resourceTable[3].getPosition(itemIndex).position;
 		}
 		agent.SetDestination (position,onReached);
 	}
 	public void goToStool(int spot){
-		resourcePosition = spot;
-		ResourceManager.resourceTable [0].swapAvailable (spot);
+		itemIndex = spot;
+		ResourceManager.resourceTable [0].swapAvailable (itemIndex);
 		//gets vector coordinate for position 
 		setResourceInUse("Stool");
 		activateTimer = false;
-		position = ResourceManager.resourceTable [0].getPosition (spot).position;
+		position = ResourceManager.resourceTable [0].getPosition (itemIndex).position;
 		//move to position of next resource
 		agent.SetDestination (position,onReached);
 	}
 
 	public void attemptRequest(){
 		activateTimer = false;
-		ResourceManager.resourceTable [0].swapAvailable (resourcePosition);
-		resetInteractionSprite (0, resourcePosition, emtStool);
+		ResourceManager.resourceTable [0].swapAvailable (itemIndex);
+		resetInteractionSprite (0, itemIndex, emtStool);
 		switch (request) {
 		case "Bed":
 			resourcePosition = 1;
@@ -161,6 +169,7 @@ public class agents : MonoBehaviour {
 		if(itemIndex<0)
 		{
 			//gets a fakeposition near the first resource 
+			resourceInUse = "none";
 			if (resourcePosition == 2) {
 				this.position = ResourceManager.resourceTable [resourcePosition].getChairPosition (0).position;
 				this.position.x -= 2;
@@ -191,7 +200,7 @@ public class agents : MonoBehaviour {
 				break;
 			case "Stool": 
 				setTimer (Timers.stoolTimer);
-				setInteractionSprite (0,resourcePosition,occuStool);
+				setInteractionSprite (0,itemIndex,occuStool);
                 //ResourceManager.resourceTable[0].getPosition(resourcePosition).GetComponent<SpriteRenderer>().enabled = false;
                 break;
 			case "Food":
@@ -240,19 +249,19 @@ public class agents : MonoBehaviour {
        
 		if (resourceInUse == "Stool")
         {
-            ResourceManager.resourceTable[0].swapAvailable(resourcePosition);
-            ResourceManager.resourceTable[0].getPosition(resourcePosition).GetComponent<SpriteRenderer>().sprite = emtStool;
-            ResourceManager.resourceTable[0].getPosition(resourcePosition).GetChild(0).GetComponent<SpriteRenderer>().enabled = false;
+            ResourceManager.resourceTable[0].swapAvailable(itemIndex);
+            ResourceManager.resourceTable[0].getPosition(itemIndex).GetComponent<SpriteRenderer>().sprite = emtStool;
+            ResourceManager.resourceTable[0].getPosition(itemIndex).GetChild(0).GetComponent<SpriteRenderer>().enabled = false;
 
         }
 
-        if (resourceInUse == "Food")
+        if (resourceInUse == "Food"&&satisfied)
         {
             ResourceManager.resourceTable[resourcePosition].getChairPosition(itemIndex).GetComponent<SpriteRenderer>().sprite = emtStool;
 			ResourceManager.resourceTable[resourcePosition].getChairPosition(itemIndex).GetChild(0).GetComponent<SpriteRenderer>().enabled = true;
         }
 
-        if (resourceInUse == "Bed")
+        if (resourceInUse == "Bed"&&satisfied)
         {
             ResourceManager.resourceTable[resourcePosition].getPosition(itemIndex).GetChild(1).GetComponent<SpriteRenderer>().enabled = false;
             ResourceManager.resourceTable[resourcePosition].getPosition(itemIndex).GetComponent<SpriteRenderer>().sprite = messBed;
@@ -267,6 +276,13 @@ public class agents : MonoBehaviour {
             //sadEmote
             this.transform.GetChild(0).gameObject.gameObject.GetComponent<SpriteRenderer>().sprite = sadT;
         }
+
+		if (resourceInUse == "Line") {
+			if (!ResourceManager.resourceTable [3].getIfAvailable (itemIndex)) {
+				ResourceManager.resourceTable [3].swapAvailable (itemIndex);
+			}
+		}
+
 		agent.SetDestination (pos);
 	}
 		
@@ -297,9 +313,14 @@ public class agents : MonoBehaviour {
 		}
 	}
 	public void traverseLine(int spot){
-		ResourceManager.resourceTable [3].swapAvailable (spot);
-		position = ResourceManager.resourceTable[3].getPosition(spot-1).position;
-		ResourceManager.resourceTable [3].swapAvailable (spot-1);
+		if(ResourceManager.resourceTable[3].getIfAvailable(spot-1))
+			ResourceManager.resourceTable [3].swapAvailable (spot-1);
+		if(!ResourceManager.resourceTable[3].getIfAvailable(spot))
+			ResourceManager.resourceTable [3].swapAvailable (spot);
+
+		itemIndex = spot - 1;
+		position = ResourceManager.resourceTable[3].getPosition(itemIndex).position;
+
 		agent.SetDestination (position);
 
 
@@ -338,6 +359,73 @@ public class agents : MonoBehaviour {
 					//Debug.Log("Set down animation");
 		}
 	}
+	void OnTriggerEnter2D(Collider2D other){
+		GameObject person = other.gameObject;
+		//modified to ensure that if a patron is go to bed or leaving bed they will not trigger being in line
+		if (other.tag == "Line") {
+			if (!this.getAttended()) {
+				foundNextPosition = false;
+			}
+		}
+	}
 
+	void OnTriggerExit2D(Collider2D other){
+		GameObject person = other.gameObject;
+		if (other.tag =="Line") {
+			if (!this.getAttended()&&foundNextPosition) {
+				foundNextPosition = false;
+			}
+		}
+	}
+
+	void checkIfStoolAvailable(){
+		int stoolPos = ResourceManager.resourceTable [0].availablePosition ();
+		if(stoolPos>=0&&!foundNextPosition){
+			foundNextPosition = true;
+			ResourceManager.resourceTable [3].swapAvailable (0);
+			goToStool (stoolPos);
+
+		}
+	}
+
+	void checkIfNextAvailable(){
+		if (ResourceManager.resourceTable[3].getIfAvailable(itemIndex-1)&&!foundNextPosition) {
+			foundNextPosition = true;
+			traverseLine (itemIndex);
+		}
+	}
+
+	void setResourceSprite(){
+		if (resourceInUse == "Stool")
+		{
+			ResourceManager.resourceTable[0].swapAvailable(itemIndex);
+			ResourceManager.resourceTable[0].getPosition(itemIndex).GetComponent<SpriteRenderer>().sprite = emtStool;
+		}
+
+		else if (resourceInUse == "Food")
+		{
+			ResourceManager.resourceTable[resourcePosition].getChairPosition(itemIndex).GetComponent<SpriteRenderer>().sprite = emtStool;
+			ResourceManager.resourceTable[resourcePosition].getChairPosition(itemIndex).GetChild(0).GetComponent<SpriteRenderer>().enabled = true;
+		}
+
+		else if (resourceInUse == "Bed")
+		{
+			ResourceManager.resourceTable[resourcePosition].getPosition(itemIndex).GetChild(1).GetComponent<SpriteRenderer>().enabled = false;
+			ResourceManager.resourceTable[resourcePosition].getPosition(itemIndex).GetComponent<SpriteRenderer>().sprite = messBed;
+		}
+
+	}
+
+	void setSatisfiedSprite(){
+		if (satisfied){
+			//happyEmote
+			this.transform.GetChild(0).gameObject.gameObject.GetComponent<SpriteRenderer>().sprite = happyT;
+		}
+		else
+		{
+			//sadEmote
+			this.transform.GetChild(0).gameObject.gameObject.GetComponent<SpriteRenderer>().sprite = sadT;
+		}
 				
+	}
 }
