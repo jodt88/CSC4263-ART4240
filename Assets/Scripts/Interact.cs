@@ -6,8 +6,9 @@ public class Interact : MonoBehaviour {
 	GameObject tavernObj;
     GameObject sensorObj;
     public Sprite cleanBed;
-	// Use this for initialization
-	void Start ()
+    List<AudioSource> audios = new List<AudioSource>();
+    // Use this for initialization
+    void Start ()
     {
 	}
 	
@@ -44,7 +45,8 @@ public class Interact : MonoBehaviour {
 	}
 
 	void interactPatron(){
-		//checks that left button was clicked while behind bar
+        //checks that left button was clicked while behind bar
+        GetComponents(audios);
 		if (tavernObj.name.Contains("patron")&&barSensor.behindBar)
         {
 			GameObject patron = findPatron ();
@@ -52,6 +54,11 @@ public class Interact : MonoBehaviour {
 			if (patron != null)
             {
                 patron.GetComponent<agents>().wasAttended();
+                if (patron.GetComponent<agents>().getRequest() == "Bed")
+                    audios[1].Play();
+                else
+                    audios[2].Play();
+
             }
 
 	    }
@@ -63,6 +70,8 @@ public class Interact : MonoBehaviour {
         if(tavernObj.transform.parent.gameObject.GetComponent<TableSensor>().getByTable())
         {
             ResourceManager.resourceTable[2].swapAvailable(tavernObj.transform.GetSiblingIndex()+ tavernObj.transform.parent.transform.GetSiblingIndex()*4);
+            GetComponents(audios);
+            audios[3].Play();
             tavernObj.transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = false;
         }
     }
@@ -72,6 +81,8 @@ public class Interact : MonoBehaviour {
         if (tavernObj.name == sensorObj.transform.parent.gameObject.name)
         {
             ResourceManager.resourceTable[1].swapAvailable(tavernObj.transform.GetSiblingIndex());
+            GetComponents(audios);
+            audios[3].Play();
             tavernObj.GetComponent<SpriteRenderer>().sprite = cleanBed;
         }
     }
