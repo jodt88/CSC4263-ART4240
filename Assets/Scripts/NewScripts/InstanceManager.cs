@@ -7,6 +7,7 @@ public class InstanceManager : MonoBehaviour {
 	float dtSpawn; //time since last spawn
 	int count; //the number of patrons that have spawned in the day.
 	int spawnTotal;
+	float spawnRateBonus=0f;
 	string request; //the request of the patron 
 	public static Queue<string> requestList = new Queue<string> ();//holds all the requests for the day  this will be used to act as a way to determine which patron will be spawned next
 	public string[] requests = {"Bed","Food","Quest"};
@@ -16,7 +17,9 @@ public class InstanceManager : MonoBehaviour {
     public Sprite maleSprt;
     
 	void Awake(){
-		initializePatronSpawn ();
+		if (StoreData.musicUpgrades == 5)
+			spawnRateBonus = .5f;
+		initializeDayValues();
 		Debug.Log ("Total that will spawn: " + spawnTotal.ToString());
 		for(int i = 0;i<spawnTotal;i++)
 		{
@@ -24,8 +27,6 @@ public class InstanceManager : MonoBehaviour {
 			requestList.Enqueue(requests[Random.Range(0,2)]);
 
 		}
-
-
 	}
 
 	public GameObject patronInstance;
@@ -59,43 +60,43 @@ public class InstanceManager : MonoBehaviour {
 
 
 	}
-	void initializePatronSpawn(){
+	void initializeDayValues(){
 		switch (Inn.day) {
 		case 1:
-			Timers.spawnTimer = 5f;
-			//spawnTotal = 53;
+			Timers.spawnTimer = 4.5f-spawnRateBonus;
+			Inn.opponentMultiplier = 1f;
 			break;
 		case 2:
-			Timers.spawnTimer = 4.5f;
-			//spawnTotal = 59;
+			Timers.spawnTimer = 4.25f-spawnRateBonus;
+			Inn.opponentMultiplier = 1.25f;
 			break;
 		case 3:
-			Timers.spawnTimer = 4f;
-			//spawnTotal = 67;
+			Timers.spawnTimer = 3.75f-spawnRateBonus;
+			Inn.opponentMultiplier = 1.50f;
 			break;
 		case 4:
-			Timers.spawnTimer = 3.5f;
-			//spawnTotal = 67;
+			Timers.spawnTimer = 3.25f-spawnRateBonus;
+			Inn.opponentMultiplier = 2.0f;
 			break;
 		case 5:
-			Timers.spawnTimer = 3.0f;
-			//spawnTotal = 89;
+			Timers.spawnTimer = 2.75f-spawnRateBonus;
+			Inn.opponentMultiplier = 2.50f;
 			break;
 		case 6:
-			Timers.spawnTimer = 2.5f;
-			//spawnTotal = 107;
+			Timers.spawnTimer = 2.25f-spawnRateBonus;
+			Inn.opponentMultiplier = 2.75f;
 			break;
 		case 7:
-			Timers.spawnTimer = 2f;
-			//spawnTotal = 134;
+			Timers.spawnTimer = 1.75f-spawnRateBonus;
+			Inn.opponentMultiplier = 3f;
 			break;
 		}
+		Debug.Log (Timers.spawnTimer);
 		spawnTotal = (int)calculateSpawnCount (Timers.spawnTimer);
 	}
 
 	public float calculateSpawnCount(float spawnRate){
 		float timeInDay = 60f * (float)Inn.hour + (float)Inn.minute;
-		Debug.Log (timeInDay);
 		return ((timeInDay - (Timers.lineTimer + Timers.stoolTimer + Timers.bedTimer + 2f)) / spawnRate);
 	}
 

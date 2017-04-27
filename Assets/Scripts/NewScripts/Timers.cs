@@ -6,7 +6,7 @@ using System.Collections;
 public static class Timers
 {
 	public static float lineTimer=8f;
-	public static float stoolTimer=15f;
+	public static float stoolTimer=11f;
 	public static float foodTimer=13f;
 	public static float foodCleanTimer = 5f;
 	public static float bedTimer=17f;
