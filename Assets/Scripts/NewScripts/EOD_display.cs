@@ -27,7 +27,7 @@ public class EOD_display : MonoBehaviour
 		Inn.playerScore_net += Inn.playerScore_now;
         GetComponents(audio);
 
-        if (Inn.playerScore_now > Inn.opponentScore)
+        if (Inn.playerScore_net > Inn.opponentScore)
             audio[0].Play();
         else
             audio[1].Play();
