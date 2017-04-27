@@ -78,7 +78,7 @@ public class Interact : MonoBehaviour {
 
     void interactBed()
     {
-        if (tavernObj.name == sensorObj.transform.parent.gameObject.name)
+        if (tavernObj.transform.GetChild(0).gameObject.GetComponent<BedSensor>().getByBed())
         {
             ResourceManager.resourceTable[1].swapAvailable(tavernObj.transform.GetSiblingIndex());
             GetComponents(audios);

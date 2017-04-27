@@ -75,6 +75,18 @@ public class ResourceManager : MonoBehaviour {
 		for(int i = 0; i<tablesEnabled;i++)
 			table.transform.GetChild (i).gameObject.SetActive (true);
 	}
+
+    public void enableMinstrels(int upgrade){
+       
+        GameObject[] minstrel = GameObject.FindGameObjectsWithTag("Minstrel");
+        if (upgrade > 0)
+        {
+            for (int i = 0; i < upgrade; i++)
+            {
+                minstrel[i].SetActive(true);
+            }
+        }
+    }
 }
 
 public class Resource{
