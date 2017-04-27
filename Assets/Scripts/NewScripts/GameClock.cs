@@ -10,7 +10,7 @@ public class GameClock : MonoBehaviour
 
 	void Awake()
     {
-		SetDayTimer (1,10);
+		SetDayTimer (3,00);
 	}
 
     void Start()
@@ -18,7 +18,7 @@ public class GameClock : MonoBehaviour
 		// set hour and minute if scene is the main scene (currently approx. real-time = 5 minutes)
 		if (SceneManager.GetActiveScene ().name == "main") {
 
-			SetDayTimer (1,10);
+			SetDayTimer (3,00);
             Inn.playerScore_now = 0;
         }
 		// set hour and minute if scene is the end of day recap scene (currently approx. real-time = 5 seconds)
