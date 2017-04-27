@@ -55,7 +55,7 @@ public class ResourceManager : MonoBehaviour {
 			else if (i == 1)
 				enableTables (StoreData.tableUpgrades);
 		}
-
+		enableMinstrels (StoreData.musicUpgrades);
 	}
 
 	public void initializeValues(){
@@ -78,12 +78,12 @@ public class ResourceManager : MonoBehaviour {
 
     public void enableMinstrels(int upgrade){
        
-        GameObject[] minstrel = GameObject.FindGameObjectsWithTag("Minstrel");
+        GameObject minstrel = GameObject.Find("Minstrels");
         if (upgrade > 0)
         {
             for (int i = 0; i < upgrade; i++)
             {
-                minstrel[i].SetActive(true);
+				minstrel.transform.GetChild (i).gameObject.SetActive (true);
             }
         }
     }

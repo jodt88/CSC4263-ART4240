@@ -56,7 +56,7 @@ public class mainMenu : MonoBehaviour {
 			{
 				sequenceIndex = 0;
                 cheatActivated = true;
-				Inn.day = 7;						// Set day to 6, so when game starts its 7th day (last day)
+				Inn.day = 6;						// Set day to 6, so when game starts its 7th day (last day)
 				Inn.playerScore_net = 2000000000;	// Set the inn's total profit to 2 billion (to guaruntee a win)
 				StartCoroutine (performFade3 ());
 			}
@@ -71,8 +71,8 @@ public class mainMenu : MonoBehaviour {
 		yield return new WaitForSeconds(fadeTime);
 		if (Inn.day == 1)
 			SceneManager.LoadScene("Letter");
-		else if (Inn.day == 7)
-			SceneManager.LoadScene("main");
+		else if (Inn.day == 6)
+			SceneManager.LoadScene("End of Day Recap");
 
 	}
 }

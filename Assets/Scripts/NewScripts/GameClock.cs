@@ -5,56 +5,64 @@ using UnityEngine;
 
 public class GameClock : MonoBehaviour
 {
-    public static double lastChange = 0;
-    public static bool musicFadeOutTrigger; //Utilized by the MusicPlayer Script
+	public static double lastChange = 0;
+	public static bool musicFadeOutTrigger; //Utilized by the MusicPlayer Script
 
-    void Start()
-    {
-        // set hour and minute if scene is the main scene (currently approx. real-time = 5 minutes)
-        if (SceneManager.GetActiveScene().name == "main")
-        {
-            Inn.hour = 3;
-            Inn.minute = 00;
-							// also increment the day
-			Inn.playerScore_now = 0;	// also reset day's profit to 0
-        }
-        // set hour and minute if scene is the end of day recap scene (currently approx. real-time = 5 seconds)
-        else if (SceneManager.GetActiveScene().name == "End of Day Recap")
-        {
-			Inn.day++;	
-            Inn.hour = 0;
-            Inn.minute = 15;
-        }
+	void Awake(){
+		SetDayTimer (1,10);
+	}
+	void Start()
+	{
+		// set hour and minute if scene is the main scene (currently approx. real-time = 5 minutes)
+		if (SceneManager.GetActiveScene ().name == "main") {
 
-        musicFadeOutTrigger = false;
-    } 
+			SetDayTimer (1,10);
+		}
+		// set hour and minute if scene is the end of day recap scene (currently approx. real-time = 5 seconds)
+		else if (SceneManager.GetActiveScene().name == "End of Day Recap")
+		{
+			SetTransitionDayTimer (5);
+		}
 
-    void Update()
-    {
-        // if clock reaches 0 hours and 0 minutes...
-        if (Inn.minute == 0 && Inn.hour == 0)
-        {
-            StartCoroutine(performFade());      // ...fade into the next scene
-        }
-        // if clock has time remaining...
-        else
-        {
+		musicFadeOutTrigger = false;
+	} 
 
-            if (Time.time - lastChange > 1.0)   // sets time interval to 1 second (pt. 1)
-            {
-                // if no more minutes remain...
-                if (Inn.minute == 0)
-                {
-                    Inn.minute = 59;            // ...reset seconds to 59
-                    Inn.hour--;                 // ...decrement the hour
-                }
-                Inn.minute--;                   // decrement the minute
-                lastChange = Time.time;         // sets time interval to 1 second (pt. 2)
-            }
-        }
-    }
+	void SetDayTimer(int hours,int minutes){
+		Inn.hour = hours;
+		Inn.minute = minutes;
+		Inn.playerScore_now = 0;
+	}
 
-    IEnumerator performFade()
+	void SetTransitionDayTimer(int seconds){
+		Inn.day++;
+		Inn.hour = 0;
+		Inn.minute = seconds;
+	}
+
+	void Update()
+	{
+		// if clock reaches 0 hours and 0 minutes...
+		if (SceneManager.GetActiveScene ().name == "main"||SceneManager.GetActiveScene ().name == "End of Day Recap") {
+			if (Inn.minute == 0 && Inn.hour == 0) {
+				StartCoroutine (performFade ());      // ...fade into the next scene
+			}
+			// if clock has time remaining...
+			else {
+
+				if (Time.time - lastChange > 1.0) {   // sets time interval to 1 second (pt. 1)
+					// if no more minutes remain...
+					if (Inn.minute == 0) {
+						Inn.minute = 59;            // ...reset seconds to 59
+						Inn.hour--;                 // ...decrement the hour
+					}
+					Inn.minute--;                   // decrement the minute
+					lastChange = Time.time;         // sets time interval to 1 second (pt. 2)
+				}
+			}
+		}
+	}
+
+	IEnumerator performFade()
 	{
 		// fade out the scene
 		float fadeTime = GameObject.Find ("ClockAndFade").GetComponent<SceneFade> ().BeginFade (1);    
