@@ -8,16 +8,19 @@ public class GameClock : MonoBehaviour
 	public static double lastChange = 0;
 	public static bool musicFadeOutTrigger; //Utilized by the MusicPlayer Script
 
-	void Awake(){
+	void Awake()
+    {
 		SetDayTimer (1,10);
 	}
-	void Start()
+
+    void Start()
 	{
 		// set hour and minute if scene is the main scene (currently approx. real-time = 5 minutes)
 		if (SceneManager.GetActiveScene ().name == "main") {
 
 			SetDayTimer (1,10);
-		}
+            Inn.playerScore_now = 0;
+        }
 		// set hour and minute if scene is the end of day recap scene (currently approx. real-time = 5 seconds)
 		else if (SceneManager.GetActiveScene().name == "End of Day Recap")
 		{
@@ -30,14 +33,16 @@ public class GameClock : MonoBehaviour
 	void SetDayTimer(int hours,int minutes){
 		Inn.hour = hours;
 		Inn.minute = minutes;
-		Inn.playerScore_now = 0;
-	}
+        
+
+    }
 
 	void SetTransitionDayTimer(int seconds){
 		Inn.day++;
 		Inn.hour = 0;
 		Inn.minute = seconds;
-	}
+        
+    }
 
 	void Update()
 	{

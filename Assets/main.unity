@@ -1053,6 +1053,8 @@ MonoBehaviour:
   - {fileID: 702063163}
   - {fileID: 421759427}
   - {fileID: 1301470315}
+  - {fileID: 689967507}
+  - {fileID: 862374217}
   inflateRadius: 0.1
   regenerateFlag: 1
 --- !u!4 &505974337
@@ -1463,11 +1465,17 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1811622715246656, guid: 301601007d7424ca39c16a3bac506cad, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 301601007d7424ca39c16a3bac506cad, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &689967507 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114777541544836602, guid: 301601007d7424ca39c16a3bac506cad,
+    type: 2}
+  m_PrefabInternal: {fileID: 689967506}
+  m_Script: {fileID: 11500000, guid: c9e4ba9b495710148bbab30aa1ce1048, type: 3}
 --- !u!4 &702063160 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4219725402546558, guid: 7db8c3ae0ff644bd481c5dc12853322b,
@@ -1769,11 +1777,17 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1811622715246656, guid: 301601007d7424ca39c16a3bac506cad, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 301601007d7424ca39c16a3bac506cad, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &862374217 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114777541544836602, guid: 301601007d7424ca39c16a3bac506cad,
+    type: 2}
+  m_PrefabInternal: {fileID: 862374216}
+  m_Script: {fileID: 11500000, guid: c9e4ba9b495710148bbab30aa1ce1048, type: 3}
 --- !u!4 &915870124 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4219725402546558, guid: 7db8c3ae0ff644bd481c5dc12853322b,
