@@ -41,12 +41,12 @@ public class rivalLetter : MonoBehaviour {
 			GUI.Label (new Rect (Screen.width / 2 - 350, Screen.height / 2 - 25, 100, 50),
 				"Dear New Guy," +
 				"\n\n" +
-				"   Dang it! Who would've thought a nameless twit like you would\n" +
-				"actually beat me at my own game! I mean seriously?! How?!?!\n" +
-				"Well...as per our deal, I'll leave town, try to carve out my\n" +
-				"fortune elsewhere. I hear Borrowind is lovely this time of year.\n" +
-				"Well, anyway, best of luck to you with this po-dunk town. You'll\n" +
-				"need it." +
+				"   Conglaturation! Who would've thought a nameless twit like\n" +
+				"you would actually beat me at my own game! I mean seriously?!\n" +
+				"How?!?! Well...as per our deal, I'll leave town, try to carve\n" +
+				"out myfortune elsewhere. I hear Borrowind is lovely this time\n" +
+				"of year. Well, anyway, best of luck to you with this po-dunk\n" +
+				"town. You'll need it." +
 				"\n\n" +
 				"Apparently your inferior,\n" +
 				"The worst innkeeper in town\n" +
@@ -61,7 +61,7 @@ public class rivalLetter : MonoBehaviour {
 				"   Well this is embarrassing. Not really sure how this happened\n" +
 				"really. You made the same amount of money as me. So what do we do?\n" +
 				"Does this mean I actually have to treat you kindly? Do I seek\n" +
-				"counseling to overcome my extreme narcissism? Our agreement doesn't\n" +
+				"counselling to overcome my extreme narcissism? Our agreement doesn't\n" +
 				"say anything about us being equals. I really didn't think this\n" +
 				"through, did I? I guess this means we both go our seperate ways and\n" +
 				"live happily ever after. As much as it pains me to say it, I guess\n" +
@@ -76,7 +76,7 @@ public class rivalLetter : MonoBehaviour {
 
 	void Update ()
 	{
-		if (Input.GetKeyDown (KeyCode.DownArrow) && letterPage < 4) {
+		if (Input.GetKeyDown (KeyCode.DownArrow) && letterPage < 5) {
 			letterPage++;
 		}
 		else if(Input.GetKeyDown(KeyCode.UpArrow) && letterPage>1){
@@ -92,11 +92,14 @@ public class rivalLetter : MonoBehaviour {
 			break;
 		case 3:
 			letterContent = openingLetterContent [2];
-			letterSubContent = "Press the DOWN/UP ARROW to view Next/Previous page.";
-
 			break;
 		case 4:
 			letterContent = openingLetterContent[3];
+			letterSubContent = "Press the DOWN/UP ARROW to view Next/Previous page.";
+			//letterSubContent = "Press the SPACEBAR to continue.";
+			break;
+		case 5:
+			letterContent = openingLetterContent [4];
 			letterSubContent = "Press the SPACEBAR to continue.";
 			break;
 
@@ -139,7 +142,7 @@ public class rivalLetter : MonoBehaviour {
 			"business rivalry a bit more interesting. Let's say, in a week's time,\n" +
 			"if my inn makes more money than yours, you make like a corrupt jarl\n" +
 			"and leave town. In the very unlikely chance that your inn makes more\n" +
-			"money than mine, I shut down. I'll even through in an old copy of The\n" +
+			"money than mine, I shut down. I'll even throw in an old copy of The\n" +
 			"Innkeeper's Guide, to keep you from making a complete fool of yourself.\n" +
 			"Best of luck to you with your squalor." +
 			"\n\n" +
@@ -175,11 +178,12 @@ public class rivalLetter : MonoBehaviour {
 		openingLetterContent.Add ("RESOURCES:\n" +
 			"At some point during your business endeavors, you're going to\n" +
 			"need to buy more items. This could be in the form of more beds,\n" +
-			"tables, or minstrels to provide entertainment to your inn. The\n" +
-			"inn is too busy during the day to shop around for such things.\n" +
-			"Once a business day has concluded, you can purchase items from\n" +
-			"the store. Be wise with how you spend your money though,\n" +
-			"because those funds come straight from the inn's profit.");
+			"tables, or minstrels to provide entertainment to your inn (which\n" +
+			"makes customers happier, leading to higher tips). The inn is too\n" +
+			"busy during the day to shop around for such things. Once a\n" +
+			"business day has concluded, you can purchase items from the store.\n" +
+			"Be wise with how you spend your money though, because those funds\n" +
+			"come straight from the inn's profit.");
 
 		openingLetterContent.Add ("\n" +
 			"FINANCES AND RIVALRY:\n" +
@@ -191,7 +195,7 @@ public class rivalLetter : MonoBehaviour {
 			"\n" +
 			"So that about sums it up. Now you're ready to experience the joys\n" +
 			"of running your own inn. Good luck to you, and may the Divines\n" +
-			"smile on you!\n\n" +
+			"smile on you, friend!\n\n" +
 			"-Anonymous");
 	}
 }
