@@ -894,10 +894,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1811622715246656, guid: 301601007d7424ca39c16a3bac506cad, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 301601007d7424ca39c16a3bac506cad, type: 2}
   m_IsPrefabParent: 0
@@ -1039,24 +1035,24 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   navObstacles:
-  - {fileID: 1482404199}
-  - {fileID: 1301470315}
-  - {fileID: 421759427}
-  - {fileID: 143914094}
-  - {fileID: 915870127}
-  - {fileID: 421759425}
-  - {fileID: 659519826}
-  - {fileID: 1971277707}
-  - {fileID: 421759422}
-  - {fileID: 850389817}
-  - {fileID: 1025761293}
-  - {fileID: 787653057}
-  - {fileID: 421759424}
-  - {fileID: 702063163}
-  - {fileID: 421759426}
-  - {fileID: 439843794}
   - {fileID: 1072546544}
+  - {fileID: 1025761293}
+  - {fileID: 421759426}
+  - {fileID: 143914094}
+  - {fileID: 421759424}
   - {fileID: 319206624}
+  - {fileID: 1482404199}
+  - {fileID: 1971277707}
+  - {fileID: 439843794}
+  - {fileID: 915870127}
+  - {fileID: 659519826}
+  - {fileID: 850389817}
+  - {fileID: 787653057}
+  - {fileID: 421759422}
+  - {fileID: 421759425}
+  - {fileID: 702063163}
+  - {fileID: 421759427}
+  - {fileID: 1301470315}
   inflateRadius: 0.1
   regenerateFlag: 1
 --- !u!4 &505974337
@@ -4352,7 +4348,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1954786329
 Transform:
   m_ObjectHideFlags: 0

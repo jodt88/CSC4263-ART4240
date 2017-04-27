@@ -113,6 +113,7 @@ MonoBehaviour:
   bedT: {fileID: 21300000, guid: 32930b5876a36f1478bb73b321e9e72e, type: 3}
   questT: {fileID: 21300000, guid: f95f750071f05374884586071f6a4aeb, type: 3}
   sleepF: {fileID: 21300000, guid: bec565639a65e5f4bb886eb1bd09b4fd, type: 3}
+  sleepM: {fileID: 21300000, guid: fc539df601eb9324ea4f16abc9c5658f, type: 3}
   messBed: {fileID: 21300000, guid: 144c90789410fa7479a634992e669b24, type: 3}
 --- !u!114 &114367492185223632
 MonoBehaviour:

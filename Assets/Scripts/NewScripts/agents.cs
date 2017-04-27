@@ -35,8 +35,10 @@ public class agents : MonoBehaviour {
     public Sprite bedT;
     public Sprite questT;
     public Sprite sleepF;
+    public Sprite sleepM;
     public Sprite messBed;
     Sprite myRequest;
+    Sprite mySleep;
     Sprite myBack;
     Sprite myLeft;
     Sprite myRight;
@@ -73,6 +75,7 @@ public class agents : MonoBehaviour {
             myLeft = maSitL;
             myRight = maSitR;
             myFront = maSitF;
+            mySleep = sleepM;
         }
         else
         {
@@ -80,6 +83,7 @@ public class agents : MonoBehaviour {
             myLeft = femSitL;
             myRight = femSitR;
             myFront = femSitF;
+            mySleep = sleepF;
         } 
 
     }
@@ -267,7 +271,7 @@ public class agents : MonoBehaviour {
                 //ResourceManager.resourceTable[resourcePosition].getPosition(resourcePosition).GetChild(0).GetComponent<SpriteRenderer>().enabled = true;
                 arrived = true;
                 this.GetComponent<SpriteRenderer>().enabled = false;
-                ResourceManager.resourceTable[resourcePosition].getPosition(itemIndex).GetChild(1).GetComponent<SpriteRenderer>().sprite = sleepF;
+                ResourceManager.resourceTable[resourcePosition].getPosition(itemIndex).GetChild(1).GetComponent<SpriteRenderer>().sprite = mySleep;
                 ResourceManager.resourceTable[resourcePosition].getPosition(itemIndex).GetChild(1).GetComponent<SpriteRenderer>().enabled = true;
                 wasSatisfied ();
 				break;
